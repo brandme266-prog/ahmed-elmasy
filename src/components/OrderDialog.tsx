@@ -38,31 +38,9 @@ const OrderDialog = ({ open, onOpenChange, product }: OrderDialogProps) => {
     if (error) {
       toast.error("حدث خطأ، حاول مرة أخرى");
     } else {
-      // Construction of WhatsApp message
-      const rawwhatsapp = settings?.whatsapp?.replace(/[^0-9]/g, '') || "";
-      const whatsappNumber = rawwhatsapp.startsWith('01') ? `20${rawwhatsapp}` : rawwhatsapp;
-      if (!whatsappNumber) {
-        toast.error("رقم الواتساب غير مهيأ، يرجى التواصل مع الإدارة");
-        return;
-      }
-      const message = `طلب جديد من ${settings?.site_name || "متجر احمد الماسي العطور"}:\n` +
-        `الاسم: ${form.name}\n` +
-        `الهاتف: ${form.phone}\n` +
-        `المنتج: ${product.name}\n` +
-        `الكمية: ${form.quantity}\n` +
-        (form.notes ? `ملاحظات: ${form.notes}` : "");
-      
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-      
-      toast.success("تم إرسال طلبك بنجاح! جاري تحويلك للواتساب...");
-      
-      // Delay redirection slightly to let the toast show
-      setTimeout(() => {
-        window.open(whatsappUrl, "_blank");
-        setForm({ name: "", phone: "", email: "", notes: "", quantity: 1 });
-        onOpenChange(false);
-      }, 1500);
+      toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الطلب.");
+      setForm({ name: "", phone: "", email: "", notes: "", quantity: 1 });
+      onOpenChange(false);
     }
   };
 

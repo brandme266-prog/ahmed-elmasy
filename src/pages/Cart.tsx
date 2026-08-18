@@ -73,35 +73,10 @@ const Cart = () => {
     if (error) {
       toast.error("حدث خطأ، حاول مرة أخرى");
     } else {
-      // Construction of WhatsApp message
-      const rawwhatsapp = settings?.whatsapp?.replace(/[^0-9]/g, '') || "";
-      const whatsappNumber = rawwhatsapp.startsWith('01') ? `20${rawwhatsapp}` : rawwhatsapp;
-      if (!whatsappNumber) {
-        toast.error("رقم الواتساب غير مهيأ، يرجى التواصل مع الإدارة");
-        return;
-      }
-      const itemsList = items.map(item => `- ${item.name} (${item.quantity})`).join("\n");
-      const message = `طلب جديد من متجر أحمد الماسي (سلة المشتريات):\n` +
-        `الاسم: ${form.name}\n` +
-        `الهاتف: ${form.phone}\n` +
-        `العنوان: ${form.address}\n` +
-        (location ? `رابط الموقع: https://www.google.com/maps?q=${location.lat},${location.lng}\n` : "") +
-        `المنتجات:\n${itemsList}\n` +
-        `الإجمالي: ${totalPrice.toLocaleString("ar-EG")} ج.م\n` +
-        (form.notes ? `ملاحظات: ${form.notes}` : "");
-      
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-      
-      toast.success("تم إرسال طلبك بنجاح! جاري تحويلك للواتساب...");
-      
-      // Delay redirection slightly to let the toast show
-      setTimeout(() => {
-        window.open(whatsappUrl, "_blank");
-        clearCart();
-        setForm({ name: "", phone: "", address: "", email: "", notes: "" });
-        setLocation(null);
-      }, 1500);
+      toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الطلب.");
+      clearCart();
+      setForm({ name: "", phone: "", address: "", email: "", notes: "" });
+      setLocation(null);
     }
   };
 
