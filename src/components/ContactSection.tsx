@@ -16,7 +16,7 @@ const ContactSection = () => {
   const contactInfo = [
     { icon: Phone, title: "اتصل بنا", value: settings?.whatsapp || "+20 123 456 7890", dir: "ltr" as const },
     { icon: Mail, title: "البريد الإلكتروني", value: settings?.email || "info.ganna1@gmail.com" },
-    { icon: MapPin, title: "العنوان", value: settings?.address || "مصر - القاهرة" },
+    { icon: MapPin, title: "العنوان", value: settings?.address || "المنصورة" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {

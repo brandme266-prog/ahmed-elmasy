@@ -115,7 +115,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center gap-3">
                 <span className="text-primary">•</span> 
-                مصر - القاهرة
+                المنصورة
               </p>
             </div>
             {/* Social */}
