@@ -5,7 +5,17 @@ import logo from "@/assets/logo.png";
 import { useCart } from "@/contexts/CartContext";
 import { useTheme } from "@/hooks/useTheme";
 import { motion, AnimatePresence } from "framer-motion";
+import { Download } from "lucide-react";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: "accepted" | "dismissed";
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +26,26 @@ const Navbar = () => {
   const location = useLocation();
   const { totalItems } = useCart();
   const { isDark, toggle } = useTheme();
+  
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e as BeforeInstallPromptEvent);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") {
+      setDeferredPrompt(null);
+    }
+  };
 
   const { data } = useSiteSettings();
   const settings = data as SiteSettings | null;
@@ -153,6 +183,17 @@ const Navbar = () => {
                 </motion.span>
               </AnimatePresence>
             </motion.button>
+
+            {deferredPrompt && (
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={handleInstall}
+                className="p-2 rounded-xl text-primary hover:bg-primary/10 transition-colors flex"
+                aria-label="تثبيت التطبيق"
+              >
+                <Download className="w-5 h-5" />
+              </motion.button>
+            )}
 
             <Link
               to="/cart"

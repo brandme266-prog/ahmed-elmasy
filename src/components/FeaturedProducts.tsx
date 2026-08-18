@@ -60,8 +60,8 @@ const FeaturedProducts = () => {
     );
   }
 
-  // Duplicate products for infinite scrolling
-  const marqueeProducts = [...products, ...products, ...products, ...products];
+  // Remove marquee duplication
+  const displayProducts = products || [];
 
   return (
     <section className="py-20 bg-background overflow-hidden relative">
@@ -139,42 +139,27 @@ const FeaturedProducts = () => {
         </div>
       )}
 
-      <div className="w-full relative group">
-        <style>
-          {`
-            @keyframes marquee {
-              0% { transform: translateX(0%); }
-              100% { transform: translateX(50%); }
-            }
-            .animate-marquee {
-              animation: marquee 40s linear infinite;
-              display: flex;
-              width: fit-content;
-            }
-            .group:hover .animate-marquee {
-              animation-play-state: paused;
-            }
-          `}
-        </style>
-        
-        {/* We use dir="ltr" internally for the animation predictability, but items stay rtl */}
-        <div className="overflow-hidden w-full" dir="ltr">
-          <div className="animate-marquee gap-4 md:gap-6 pl-4 md:pl-6">
-            {marqueeProducts.map((product, idx) => (
-              <div
-                key={`${product.id}-${idx}`}
-                className="w-[260px] md:w-[300px] flex-none"
-                dir="rtl"
-              >
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
+      <div className="w-full relative group mt-8">
+        <div className="flex items-stretch gap-4 md:gap-6 overflow-x-auto pb-8 pt-4 px-4 scrollbar-hide snap-x">
+          {displayProducts.map((product) => (
+            <div
+              key={product.id}
+              className="w-[260px] md:w-[300px] flex-none snap-center"
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+          
+          {displayProducts.length === 0 && (
+            <div className="w-full flex items-center justify-center py-12 text-muted-foreground font-cairo">
+              لا توجد منتجات حالياً
+            </div>
+          )}
         </div>
         
         {/* Fading edges */}
-        <div className="absolute top-0 right-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
-        <div className="absolute top-0 left-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 right-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 left-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
       </div>
       
       <div className="flex justify-center mt-8 md:hidden relative z-10">

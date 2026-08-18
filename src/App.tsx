@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MetaTags from "./components/MetaTags";
 
-import InstallPWA from "./components/InstallPWA";
 import FooterScripts from "./components/FooterScripts";
 import AnalyticsTracker from "./components/AnalyticsTracker";
 
@@ -108,7 +107,6 @@ const AppContent = () => {
         </motion.div>
       </AnimatePresence>
 
-      <InstallPWA />
       <FooterScripts />
       <AnalyticsTracker />
     </div>
