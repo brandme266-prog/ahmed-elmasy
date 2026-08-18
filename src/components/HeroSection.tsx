@@ -34,15 +34,18 @@ const HeroSection = () => {
             </span>
           </motion.div>
           
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold text-foreground leading-[1.1] mb-8">
-            أحمد الماسي <br />
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold text-foreground leading-[1.1] mb-4">
+            تميّزك يبدأ من عطرك
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-primary via-yellow-300 to-yellow-600 font-medium block mt-2">
               جاذبية تأسر الحواس
+            </span>
+            <span className="text-2xl sm:text-3xl font-light text-muted-foreground block mt-3 tracking-widest">
+              📍 المنصورة
             </span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
-            اكتشف تشكيلتنا الحصرية من العطور الفاخرة التي تمزج بين الأصالة الشرقية والرقي الفرنسي، لتمنحك حضوراً لا يُنسى ويدوم طويلاً.
+            حضورٌ لا يُنسى — اكتشف تشكيلتنا الحصرية من العطور الفاخرة التي تمزج بين الأصالة الشرقية والرقي الفرنسي، لتمنحك شخصية عطرية لا تُقاوم.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
