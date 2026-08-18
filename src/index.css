@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 98%;
+    --foreground: 20 14% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 15%;
+    --primary: 35 60% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 40 20% 95%;
+    --secondary-foreground: 20 14% 15%;
+    --muted: 40 20% 95%;
+    --muted-foreground: 25 10% 45%;
+    --accent: 35 60% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 35 60% 50%;
+    --radius: 0.75rem;
+
+    --premium-gradient: linear-gradient(135deg, hsl(35 60% 50%), hsl(20 40% 40%));
+  }
+
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 43 74% 55%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 43 74% 55%;
+    --accent-foreground: 240 10% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 43 74% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    direction: rtl;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-cairo antialiased selection:bg-primary/30;
+  }
+}
+
+@layer utilities {
+  .bg-premium-gradient {
+    background: var(--premium-gradient);
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--premium-gradient);
+  }
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border/50 shadow-sm;
+  }
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-sm transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply border-primary/50 shadow-md -translate-y-1;
+  }
+  .font-en {
+    @apply font-outfit tracking-wide;
+  }
+}

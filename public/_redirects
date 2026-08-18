@@ -1,0 +1,6 @@
+# Cloudflare Pages - SPA Routing
+# All routes should fallback to index.html for client-side routing
+/*    /index.html   200
+
+# Optional: redirect www to non-www
+# https://www.gana.com/*  https://gana.com/:splat  301!

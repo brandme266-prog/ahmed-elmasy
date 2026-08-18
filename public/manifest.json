@@ -1,0 +1,23 @@
+{
+  "name": "جنّة للمنتجات الغذائية",
+  "short_name": "جنّة",
+  "description": "أفضل المنتجات الغذائية الطبيعية بجودة عالية وأسعار منافسة",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a4d2e",
+  "icons": [
+    {
+      "src": "/logo-main.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-main.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

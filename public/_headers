@@ -1,0 +1,61 @@
+# ============================================
+# Security Headers
+# ============================================
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.googletagmanager.com https://www.google-analytics.com https://aeeaepqrmgsqmeaimnhn.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://aeeaepqrmgsqmeaimnhn.supabase.co https://*.supabase.co; frame-src 'self' https://js.stripe.com; media-src 'self'
+
+# ============================================
+# Cache Static Assets (Long-lived)
+# ============================================
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ============================================
+# Cache HTML (Short-lived / No-cache)
+# ============================================
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# ============================================
+# Cache API / Dynamic (Revalidate)
+# ============================================
+/api/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# ============================================
+# Fonts (Long-lived)
+# ============================================
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# ============================================
+# Images (Medium-lived)
+# ============================================
+/*.jpg
+  Cache-Control: public, max-age=2592000
+
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+
+/*.png
+  Cache-Control: public, max-age=2592000
+
+/*.gif
+  Cache-Control: public, max-age=2592000
+
+/*.svg
+  Cache-Control: public, max-age=2592000
+
+/*.webp
+  Cache-Control: public, max-age=2592000
+
+/*.ico
+  Cache-Control: public, max-age=2592000
