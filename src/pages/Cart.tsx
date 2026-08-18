@@ -42,7 +42,13 @@ const Cart = () => {
       },
       (error) => {
         setGettingLocation(false);
-        toast.error("حدث خطأ أثناء تحديد الموقع، يرجى التأكد من تفعيل صلاحيات الموقع");
+        if (error.code === error.PERMISSION_DENIED) {
+          toast.error("لم نتمكن من تحديد موقعك. يرجى النقر على أيقونة القفل (🔒) بجوار الرابط أعلى المتصفح والسماح بصلاحية الموقع.");
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          toast.error("الموقع غير متاح حالياً. تأكد من تشغيل (Location/GPS) من إعدادات هاتفك.");
+        } else {
+          toast.error("حدث خطأ أثناء تحديد الموقع، يرجى المحاولة مرة أخرى.");
+        }
       }
     );
   };
