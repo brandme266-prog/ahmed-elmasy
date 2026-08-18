@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://ganna1.com/sitemap.xml
+Sitemap: https://ahmedalmasi.com/sitemap.xml

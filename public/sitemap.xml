@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- الصفحة الرئيسية -->
   <url>
-    <loc>https://ganna1.com/</loc>
-    <lastmod>2024-04-12</lastmod>
+    <loc>https://ahmedalmasi.com/</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- صفحة المنتجات (العطور) -->
   <url>
-    <loc>https://ganna1.com/products</loc>
-    <lastmod>2024-04-12</lastmod>
+    <loc>https://ahmedalmasi.com/products</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- صفحة المقالات المدونة -->
+  <url>
+    <loc>https://ahmedalmasi.com/articles</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- صفحة الخدمات -->
   <url>
-    <loc>https://ganna1.com/articles</loc>
-    <lastmod>2024-04-12</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ahmedalmasi.com/services</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- سلة المشتريات -->
   <url>
-    <loc>https://ganna1.com/services</loc>
-    <lastmod>2024-04-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://ganna1.com/contact</loc>
-    <lastmod>2024-04-12</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://ahmedalmasi.com/cart</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
