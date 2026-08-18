@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
+import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
 const defaultHeroImage = "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=1200";
 
@@ -84,7 +85,7 @@ const HeroSection = () => {
             <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10" />
               <img
-                src={heroImage}
+                src={optimizeImageUrl(heroImage, 1200)}
                 alt="أحمد الماسي"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 fetchPriority="high"

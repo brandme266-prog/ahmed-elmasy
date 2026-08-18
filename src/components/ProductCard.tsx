@@ -4,6 +4,7 @@ import { ShoppingCart, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
+import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
 interface ProductCardProps {
   product: {
@@ -46,7 +47,7 @@ const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
         <div className="aspect-square w-full bg-black/40 rounded-xl relative overflow-hidden group">
           {product.image_url ? (
             <img
-              src={product.image_url}
+              src={optimizeImageUrl(product.image_url)}
               alt={product.name}
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-out"
