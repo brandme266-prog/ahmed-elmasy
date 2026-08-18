@@ -70,21 +70,6 @@ const ProductDetail = () => {
     categories: Category | null;
   }
 
-  const p = product as unknown as Product;
-  const mainImage = selectedImage || p?.image_url;
-  const gallery = p?.image_urls && Array.isArray(p.image_urls) 
-    ? [p.image_url, ...p.image_urls].filter((url): url is string => !!url) 
-    : [p?.image_url].filter((url): url is string => !!url);
-    
-  const discount = p?.discount_percentage || 0;
-  const finalPrice = discount > 0 ? p.price - (p.price * discount / 100) : p.price;
-
-  const handleAddToCart = () => {
-    if (!product) return;
-    addItem({ id: product.id, name: product.name, price: finalPrice, image_url: mainImage });
-    toast.success(`تمت إضافة "${product.name}" للسلة`);
-  };
-
   if (isLoading) {
     return (
       <div className="min-h-screen">
@@ -112,6 +97,20 @@ const ProductDetail = () => {
       </div>
     );
   }
+
+  const p = product as unknown as Product;
+  const mainImage = selectedImage || p?.image_url;
+  const gallery = p?.image_urls && Array.isArray(p.image_urls) 
+    ? [p.image_url, ...p.image_urls].filter((url): url is string => !!url) 
+    : [p?.image_url].filter((url): url is string => !!url);
+    
+  const discount = p?.discount_percentage || 0;
+  const finalPrice = discount > 0 ? p.price - (p.price * discount / 100) : p.price;
+
+  const handleAddToCart = () => {
+    addItem({ id: product.id, name: product.name, price: finalPrice, image_url: mainImage });
+    toast.success(`تمت إضافة "${product.name}" للسلة`);
+  };
 
   return (
     <div className="min-h-screen">
