@@ -89,7 +89,7 @@ const FeaturedProducts = () => {
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => navigate(`/products?category=${category.id}`)}
+                onClick={() => navigate(`/products?category=${category.slug || category.id}`)}
                 className={`snap-center shrink-0 flex flex-col items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-[2rem] border transition-all duration-300 relative overflow-hidden group border-border bg-card shadow-sm hover:border-primary/50`}
               >
                 {category.image_url ? (

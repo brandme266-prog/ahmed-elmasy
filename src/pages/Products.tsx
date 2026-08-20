@@ -85,10 +85,10 @@ const Products = () => {
     setSelectedCategory(cat || null);
   }, [searchParams]);
 
-  const handleCategoryChange = (catId: string | null) => {
-    setSelectedCategory(catId);
-    if (catId) {
-      setSearchParams({ category: catId });
+  const handleCategoryChange = (catSlugOrId: string | null) => {
+    setSelectedCategory(catSlugOrId);
+    if (catSlugOrId) {
+      setSearchParams({ category: catSlugOrId });
     } else {
       setSearchParams({});
     }
@@ -116,11 +116,19 @@ const Products = () => {
     return categories;
   }, [categories]);
 
+  // Find actual category ID based on slug or ID in URL
+  const selectedCategoryObj = useMemo(() => {
+    if (!selectedCategory) return null;
+    return displayCategories?.find((c) => c.slug === selectedCategory || c.id === selectedCategory) || null;
+  }, [displayCategories, selectedCategory]);
+
+  const activeCategoryId = selectedCategoryObj?.id || selectedCategory;
+
   const { data: products, isLoading } = useQuery({
-    queryKey: ["products", selectedCategory],
+    queryKey: ["products", activeCategoryId],
     queryFn: async () => {
       let query = supabase.from("products").select("*, categories(name, slug)").eq("is_active", true).order("created_at", { ascending: false });
-      if (selectedCategory) query = query.eq("category_id", selectedCategory);
+      if (activeCategoryId) query = query.eq("category_id", activeCategoryId);
       const { data, error } = await query;
       if (error) throw error;
       return data;
@@ -242,8 +250,8 @@ const Products = () => {
               {displayCategories?.map((cat) => (
                 <Button
                   key={cat.id}
-                  variant={selectedCategory === cat.id ? "default" : "outline"}
-                  onClick={() => handleCategoryChange(cat.id)}
+                  variant={selectedCategory === cat.slug || selectedCategory === cat.id ? "default" : "outline"}
+                  onClick={() => handleCategoryChange(cat.slug || cat.id)}
                   className="font-cairo rounded-full text-sm h-9"
                   size="sm"
                 >
@@ -298,8 +306,8 @@ const Products = () => {
                   {displayCategories?.map((cat) => (
                     <Button
                       key={cat.id}
-                      variant={selectedCategory === cat.id ? "default" : "outline"}
-                      onClick={() => { handleCategoryChange(cat.id); setShowFilters(false); }}
+                      variant={selectedCategory === cat.slug || selectedCategory === cat.id ? "default" : "outline"}
+                      onClick={() => { handleCategoryChange(cat.slug || cat.id); setShowFilters(false); }}
                       className="font-cairo rounded-full text-xs h-8"
                       size="sm"
                     >
