@@ -220,7 +220,10 @@ const ProductDetail = () => {
               </div>
 
               {product.description && (
-                <p className="text-base text-muted-foreground font-cairo leading-relaxed mb-8">
+                <p 
+                  className="text-base text-muted-foreground font-cairo leading-relaxed mb-8 whitespace-pre-wrap"
+                  dir="auto"
+                >
                   {product.description}
                 </p>
               )}
