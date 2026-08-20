@@ -17,13 +17,14 @@ interface ProductCardProps {
     stock_quantity?: number | null;
     image_url: string | null;
     categories: { name: string; slug: string } | null;
+    slug?: string | null;
   };
   onOrder?: () => void;
   linkTo?: string;
 }
 
 const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
-  const href = linkTo || `/products/${product.id}`;
+  const href = linkTo || `/products/${product.slug || product.id}`;
   const { addItem } = useCart();
   
   const discount = product.discount_percentage || 0;

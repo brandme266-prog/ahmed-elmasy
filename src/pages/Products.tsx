@@ -19,6 +19,7 @@ interface Product {
   price: number;
   category_id: string;
   image_url?: string;
+  slug?: string;
   categories?: {
     name: string;
     slug: string;
@@ -413,7 +414,7 @@ const ProductListItem = ({ product }: { product: Product }) => {
       {/* Overlay Gradient on Hover */}
       <div className="absolute inset-0 bg-gradient-to-l from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl md:rounded-3xl" />
       
-      <Link to={`/products/${product.id}`} className="shrink-0 relative">
+      <Link to={`/products/${product.slug || product.id}`} className="shrink-0 relative">
         <div className="w-24 h-24 md:w-36 md:h-36 rounded-xl md:rounded-2xl overflow-hidden bg-secondary/30">
           {product.image_url ? (
             <img src={product.image_url} alt={product.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -426,7 +427,7 @@ const ProductListItem = ({ product }: { product: Product }) => {
       <div className="flex-1 min-w-0 flex flex-col justify-between py-1 relative z-10">
         <div>
           <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1 sm:gap-2 mb-1 md:mb-2">
-            <Link to={`/products/${product.id}`}>
+            <Link to={`/products/${product.slug || product.id}`}>
               <h3 className="font-cairo font-extrabold text-sm md:text-xl text-foreground hover:text-primary transition-colors line-clamp-2 leading-tight">{product.name}</h3>
             </Link>
             {product.categories && (

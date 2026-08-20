@@ -21,12 +21,16 @@ const ProductDetail = () => {
   const { data: product, isLoading } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*, categories(name, slug)")
-        .eq("id", id!)
-        .eq("is_active", true)
-        .single();
+      const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id!);
+      let query = supabase.from("products").select("*, categories(name, slug)").eq("is_active", true);
+      
+      if (isUUID) {
+        query = query.eq("id", id!);
+      } else {
+        query = query.eq("slug", decodeURIComponent(id!));
+      }
+      
+      const { data, error } = await query.single();
       if (error) throw error;
       return data;
     },
