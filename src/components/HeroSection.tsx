@@ -38,7 +38,7 @@ const HeroSection = () => {
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold text-foreground leading-[1.1] mb-4">
             تميّزك يبدأ من عطرك
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-primary via-yellow-300 to-yellow-600 font-medium block mt-2">
-              جاذبية تأسر الحواس
+              فخامة تُترك أثرًا
             </span>
             <span className="text-2xl sm:text-3xl font-light text-muted-foreground block mt-3 tracking-widest">
               📍 المنصورة
@@ -52,8 +52,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
             <a
               href="/products"
-              className="group relative overflow-hidden inline-flex items-center justify-center font-semibold px-10 py-4 rounded-xl text-primary-foreground text-lg transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
-              style={{ background: "linear-gradient(135deg, hsl(43 74% 55%), hsl(35 80% 40%))" }}
+              className="group relative overflow-hidden inline-flex items-center justify-center font-semibold px-10 py-4 rounded-xl text-primary-foreground text-lg interactive-btn bg-premium-gradient"
             >
               <span className="relative z-10 flex items-center gap-2">
                 اكتشف المجموعة
@@ -81,7 +80,7 @@ const HeroSection = () => {
           <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)' }} />
           <div className="absolute -bottom-5 -left-10 w-40 h-40 rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)' }} />
           
-          <div className="relative w-full max-w-[400px] lg:max-w-[450px] aspect-[4/5] rounded-[2rem] overflow-hidden p-2 shadow-lg border border-border bg-card group">
+          <div className="relative w-full max-w-[400px] lg:max-w-[450px] aspect-[4/5] rounded-[2rem] overflow-hidden p-2 glass-card group">
             <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10" />
               <img

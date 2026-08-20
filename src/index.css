@@ -5,50 +5,71 @@
 
 @layer base {
   :root {
-    --background: 40 30% 98%;
-    --foreground: 20 14% 15%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 15%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14% 15%;
-    --primary: 35 60% 50%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    /* Modern vibrant gold/amber for primary */
+    --primary: 43 74% 50%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 40 20% 95%;
-    --secondary-foreground: 20 14% 15%;
-    --muted: 40 20% 95%;
-    --muted-foreground: 25 10% 45%;
-    --accent: 35 60% 50%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 40 20% 90%;
-    --input: 40 20% 90%;
-    --ring: 35 60% 50%;
-    --radius: 0.75rem;
-
-    --premium-gradient: linear-gradient(135deg, hsl(35 60% 50%), hsl(20 40% 40%));
+    
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: 43 74% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 43 74% 50%;
+    
+    --radius: 1rem;
+    
+    --premium-gradient: linear-gradient(135deg, hsl(43 74% 50%), hsl(30 80% 45%), hsl(15 90% 50%));
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
   }
 
   .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 43 74% 55%;
-    --primary-foreground: 240 10% 4%;
-    --secondary: 240 5% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 43 74% 55%;
-    --accent-foreground: 240 10% 4%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 15%;
-    --input: 240 5% 15%;
-    --ring: 43 74% 55%;
+    /* Deep rich dark mode */
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Neon/Rich Gold for dark mode */
+    --primary: 43 100% 60%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 43 100% 60%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 43 100% 60%;
+
+    --glass-bg: rgba(10, 10, 15, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -62,6 +83,10 @@
   }
   body {
     @apply bg-background text-foreground font-cairo antialiased selection:bg-primary/30;
+    /* Adding subtle mesh gradient for dark mode and light mode */
+    background-image: radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
+    background-attachment: fixed;
   }
 }
 
@@ -73,16 +98,29 @@
     @apply bg-clip-text text-transparent;
     background-image: var(--premium-gradient);
   }
+  /* Modern Glassmorphism */
   .glass {
-    @apply bg-background/80 backdrop-blur-md border border-border/50 shadow-sm;
+    @apply backdrop-blur-xl shadow-lg transition-all duration-300;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
   }
   .glass-card {
-    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-sm transition-all duration-300;
+    @apply backdrop-blur-xl rounded-2xl transition-all duration-300 ease-out shadow-sm;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
   }
   .glass-card:hover {
-    @apply border-primary/50 shadow-md -translate-y-1;
+    @apply shadow-xl -translate-y-1.5 border-primary/40;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1), 0 0 20px -5px rgba(212, 175, 55, 0.2);
+  }
+  .dark .glass-card:hover {
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 25px -5px rgba(255, 180, 0, 0.15);
   }
   .font-en {
     @apply font-outfit tracking-wide;
+  }
+  /* Smooth Hover on interactive elements */
+  .interactive-btn {
+    @apply transition-all duration-300 active:scale-95 hover:shadow-lg hover:shadow-primary/20;
   }
 }
