@@ -83,21 +83,7 @@ const FeaturedProducts = () => {
       {/* Category Tabs / Cards */}
       {categories.length > 0 && (
         <div className="container mx-auto px-4 mb-10 relative z-10">
-          <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x">
-            
-            {/* All Category Card */}
-            <button
-              onClick={() => navigate('/products')}
-              className={`snap-center shrink-0 flex flex-col items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-[2rem] border transition-all duration-300 relative overflow-hidden group border-border bg-card shadow-sm hover:border-primary/50`}
-            >
-              <div className="absolute inset-0 bg-transparent group-hover:bg-primary/5 transition-opacity duration-300" />
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-primary/10 mb-2 border border-primary/20 text-primary">
-                <span className="text-xl md:text-2xl font-black">الكل</span>
-              </div>
-              <span className="font-cairo font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
-                جميع العطور
-              </span>
-            </button>
+          <div className="flex justify-center items-center gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x">
 
             {/* Dynamic Category Cards */}
             {categories.map((category) => (

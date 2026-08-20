@@ -17,10 +17,10 @@ const SchemaMarkup = () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "أحمد الماسي",
-    url: "https://jannah-foods.com",
+    url: window.location.origin,
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://jannah-foods.com/products?q={search_term_string}",
+      target: `${window.location.origin}/products?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
