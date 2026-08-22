@@ -215,11 +215,11 @@ export const staticProducts: Product[] = [
     "is_active": true,
     "is_featured": false,
     "name": "عطر فيري سيكسي 50 مل - Very Sexy",
-    "price": 650,
+    "price": 750,
     "unit": "50 مل",
     "stock_quantity": 100,
     "updated_at": "2026-08-22T09:50:10.786383+00:00",
-    "discount_percentage": 0,
+    "discount_percentage": 40,
     "slug": "very-sexy-perfume-50ml",
     "categories": {
       "name": "عطور نسائية",
