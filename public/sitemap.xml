@@ -1,41 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
   <!-- الصفحة الرئيسية -->
   <url>
     <loc>https://ahmedalmasi.com/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2024-08-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <!-- صفحة المنتجات (العطور) -->
   <url>
     <loc>https://ahmedalmasi.com/products</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2024-08-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- صفحة المقالات المدونة -->
+
+  <!-- صفحة المقالات الرئيسية -->
   <url>
     <loc>https://ahmedalmasi.com/articles</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <!-- صفحة الخدمات -->
   <url>
     <loc>https://ahmedalmasi.com/services</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2024-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- مقالة: مراجعة عطر رصاصي هوس إكسير Hawas Elixir -->
+  <url>
+    <loc>https://ahmedalmasi.com/articles/hawas-elixir-rasasi-review</loc>
+    <lastmod>2024-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>مدونة أحمد الماسي للعطور</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2024-08-20</news:publication_date>
+      <news:title>مراجعة شاملة: عطر رصاصي هوس إكسير (Hawas Elixir) - هل يستحق الشراء في 2024؟</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1594035910387-fea47794261f</image:loc>
+      <image:title>عطر رصاصي هوس إكسير Hawas Elixir</image:title>
+    </image:image>
+  </url>
+
+  <!-- مقالة: الدليل الشامل لاختيار العطر المناسب -->
+  <url>
+    <loc>https://ahmedalmasi.com/articles/how-to-choose-perfume</loc>
+    <lastmod>2024-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>مدونة أحمد الماسي للعطور</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2024-05-10</news:publication_date>
+      <news:title>الدليل الشامل: كيف تختار العطر المناسب لشخصيتك وكيمياء جسمك؟</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1594035910387-fea47794261f</image:loc>
+      <image:title>كيف تختار العطر المناسب لشخصيتك</image:title>
+    </image:image>
   </url>
-  <!-- سلة المشتريات -->
+
+  <!-- مقالة: العطور الصيفية مقابل الشتوية -->
   <url>
-    <loc>https://ahmedalmasi.com/cart</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
+    <loc>https://ahmedalmasi.com/articles/summer-vs-winter-perfumes</loc>
+    <lastmod>2024-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>مدونة أحمد الماسي للعطور</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2024-06-15</news:publication_date>
+      <news:title>مقارنة حاسمة: العطور الصيفية مقابل العطور الشتوية - ماذا تختار؟</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1588405748880-12d1d2a59f75</image:loc>
+      <image:title>الفرق بين العطور الصيفية والشتوية</image:title>
+    </image:image>
   </url>
+
+  <!-- مقالة: نصائح لثبات رائحة العطر -->
+  <url>
+    <loc>https://ahmedalmasi.com/articles/long-lasting-perfume-tips</loc>
+    <lastmod>2024-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>مدونة أحمد الماسي للعطور</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2024-07-01</news:publication_date>
+      <news:title>كيف تحافظ على رائحة عطرك طوال اليوم؟ نصائح ذهبية للثبات</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1592945403244-b3fbafd7f539</image:loc>
+      <image:title>نصائح لثبات رائحة العطر طوال اليوم</image:title>
+    </image:image>
+  </url>
+
 </urlset>

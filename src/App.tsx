@@ -113,21 +113,25 @@ const AppContent = () => {
   );
 };
 
+import { HelmetProvider } from "react-helmet-async";
+
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <CartProvider>
-          <BrowserRouter>
-            <MetaTags />
-            <ScrollToTop />
-            <Sonner position="top-center" expand={true} richColors />
-            <Toaster />
-            <AppContent />
-          </BrowserRouter>
-        </CartProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <CartProvider>
+            <BrowserRouter>
+              <MetaTags />
+              <ScrollToTop />
+              <Sonner position="top-center" expand={true} richColors />
+              <Toaster />
+              <AppContent />
+            </BrowserRouter>
+          </CartProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
 

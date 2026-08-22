@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { Loader2, ArrowRight, ShoppingCart, Star, Shield, Truck, ChevronLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
-
+import ProductSchema from "@/components/ProductSchema";
 import { useState } from "react";
 
 const ProductDetail = () => {
@@ -27,7 +27,7 @@ const ProductDetail = () => {
       if (isUUID) {
         query = query.eq("id", id!);
       } else {
-        query = query.eq("slug", decodeURIComponent(id!));
+        query = query.eq("name", decodeURIComponent(id!));
       }
       
       const { data, error } = await query.single();
@@ -118,6 +118,7 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen">
+      <ProductSchema product={p} finalPrice={finalPrice} />
       <Navbar />
       <section className="pt-24 pb-12">
         <div className="container mx-auto px-4">
