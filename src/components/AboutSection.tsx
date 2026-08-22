@@ -29,11 +29,19 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight">
-              نصنع <span className="text-gradient">الأصالة</span>
+              أحمد الماسي <span className="text-gradient">للعطور الفاخرة</span>
             </h2>
-            <p className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed">
-              أحمد الماسي هي علامة رائدة في مجال العطور الفاخرة، متخصصة في توفير أندر الزيوت العطرية وتصميم عطور بتركيبات استثنائية تناسب ذوقك الرفيع.
-            </p>
+            <div className="text-muted-foreground text-lg font-light leading-relaxed space-y-4">
+              <p>
+                مرحباً بك في عالم <strong>أحمد الماسي للعطور</strong>، الوجهة الأولى في مصر والوطن العربي لعشاق التميز والفخامة. نحن متخصصون في تقديم أندر الزيوت العطرية وأفخم العطور المصممة خصيصاً لتلبي ذوقك الرفيع.
+              </p>
+              <p>
+                إذا كنت تبحث عن <strong>أفضل عطور رجالية جذابة</strong> تمنحك الثقة في كل خطوة، أو <strong>عطور نسائية مثيرة</strong> تدوم طويلاً، فإن مجموعتنا الحصرية تضم أفضل العطور المستوحاة من الماركات العالمية (مثل عطر فيري سيكسي، سترونجر وذ يو، ودي جي) بتركيبات عالية التركيز والثبات.
+              </p>
+              <p>
+                نؤمن بأن العطر ليس مجرد رائحة، بل هو هويتك وبصمتك التي تسبقك. لذلك نعتمد على استيراد أفضل الخامات العطرية لضمان فوحان استثنائي وثبات يدوم لأيام على الملابس، لتكتمل أناقتك في جميع مناسباتك وسهراتك.
+              </p>
+            </div>
           </motion.div>
 
           <motion.div

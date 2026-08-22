@@ -10,6 +10,7 @@ import { Loader2, ArrowRight, ShoppingCart, Star, Shield, Truck, ChevronLeft } f
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import ProductSchema from "@/components/ProductSchema";
+import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 
 const ProductDetail = () => {
@@ -59,6 +60,16 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>{product.name} - أحمد الماسي للعطور</title>
+        <meta name="description" content={product.description?.substring(0, 160) || `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`} />
+        <meta property="og:title" content={`${product.name} - أحمد الماسي للعطور`} />
+        <meta property="og:description" content={product.description?.substring(0, 160) || `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`} />
+        <meta property="og:image" content={mainImage || 'https://ahmedalmasi.com/hero-main.jpg'} />
+        <meta name="twitter:title" content={`${product.name} - أحمد الماسي للعطور`} />
+        <meta name="twitter:description" content={product.description?.substring(0, 160) || `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`} />
+        <meta name="twitter:image" content={mainImage || 'https://ahmedalmasi.com/hero-main.jpg'} />
+      </Helmet>
       <ProductSchema product={p} finalPrice={finalPrice} />
       <Navbar />
       <section className="pt-24 pb-12">
@@ -166,12 +177,11 @@ const ProductDetail = () => {
               </div>
 
               {product.description && (
-                <p 
-                  className="text-base text-muted-foreground font-cairo leading-relaxed mb-8 whitespace-pre-wrap"
+                <div 
+                  className="prose prose-lg dark:prose-invert max-w-none mb-8 font-cairo text-muted-foreground leading-relaxed prose-headings:text-foreground prose-h2:text-2xl prose-h3:text-xl prose-h3:text-primary prose-strong:text-foreground prose-p:mb-4 prose-ul:mb-4 prose-ul:list-disc prose-ul:pl-4 prose-li:mb-2"
                   dir="auto"
-                >
-                  {product.description}
-                </p>
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                />
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
