@@ -1,59 +1,10 @@
-import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const fallbackArticles = [
-  {
-    id: "f1",
-    title: "أسرار اختيار العطر المناسب لشخصيتك",
-    slug: "how-to-choose-perfume",
-    image_url: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600",
-    excerpt: "تعرف على كيفية اختيار العطر الذي يعكس شخصيتك ويتناسب مع كيمياء جسمك ليدوم طويلاً.",
-    published_at: new Date().toISOString(),
-    created_at: new Date().toISOString()
-  },
-  {
-    id: "f2",
-    title: "الفرق بين العطور الفرنسية والشرقية",
-    slug: "french-vs-oriental-perfumes",
-    image_url: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600",
-    excerpt: "اكتشف السحر الخفي في العطور الشرقية المليئة بالعود والعنبر، ورقة العطور الفرنسية الكلاسيكية.",
-    published_at: new Date().toISOString(),
-    created_at: new Date().toISOString()
-  },
-  {
-    id: "f3",
-    title: "كيف تحافظ على رائحة عطرك طوال اليوم؟",
-    slug: "long-lasting-perfume-tips",
-    image_url: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600",
-    excerpt: "نصائح وحيل ذهبية لطريقة رش العطر وأماكن النبض الصحيحة لضمان ثبات الرائحة أطول فترة ممكنة.",
-    published_at: new Date().toISOString(),
-    created_at: new Date().toISOString()
-  }
-];
+import { staticArticles } from "@/data/articles";
 
 const ArticlesSection = () => {
-  const { data: articles } = useQuery({
-    queryKey: ["latest-articles"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("is_published", true)
-        .order("published_at", { ascending: false })
-        .limit(3);
-      if (error) throw error;
-      return data;
-    },
-  });
-
-  const displayArticles = useMemo(() => {
-    if (articles && articles.length > 0) return articles;
-    return fallbackArticles;
-  }, [articles]);
+  const displayArticles = staticArticles.slice(0, 3);
 
   return (
     <section className="py-20 relative overflow-hidden">
