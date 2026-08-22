@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { staticProducts, Product } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -18,72 +17,14 @@ const ProductDetail = () => {
   const { addItem } = useCart();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const { data: product, isLoading } = useQuery({
-    queryKey: ["product", id],
-    queryFn: async () => {
-      const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id!);
-      let query = supabase.from("products").select("*, categories(name, slug)").eq("is_active", true);
-      
-      if (isUUID) {
-        query = query.eq("id", id!);
-      } else {
-        query = query.eq("name", decodeURIComponent(id!));
-      }
-      
-      const { data, error } = await query.single();
-      if (error) throw error;
-      return data;
-    },
-    enabled: !!id,
-  });
+  // Find the product statically based on slug or ID
+  const product = staticProducts.find(p => p.slug === id || p.slug === decodeURIComponent(id!) || p.id === id);
+  const isLoading = false;
 
-  const { data: similarProducts } = useQuery({
-    queryKey: ["similar-products", product?.category_id, id],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*, categories(name, slug)")
-        .eq("is_active", true)
-        .eq("category_id", product!.category_id!)
-        .neq("id", id!)
-        .limit(4);
-      if (error) throw error;
-      return data;
-    },
-    enabled: !!product?.category_id,
-  });
-
-  // Define interfaces for better typing
-  interface Category {
-    name: string;
-    slug: string;
-  }
-
-  interface Product {
-    id: string;
-    name: string;
-    price: number;
-    discount_percentage?: number | null;
-    description: string | null;
-    image_url: string | null;
-    image_urls: string[] | null;
-    category_id: string | null;
-    is_featured: boolean;
-    unit: string | null;
-    stock_quantity: number | null;
-    categories: Category | null;
-  }
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen">
-        <Navbar />
-        <div className="flex justify-center items-center min-h-[60vh]">
-          <Loader2 className="w-8 h-8 animate-spin text-primary" />
-        </div>
-      </div>
-    );
-  }
+  // Find similar products in the same category, excluding current product
+  const similarProducts = product ? staticProducts
+    .filter(p => p.category_id === product.category_id && p.id !== product.id)
+    .slice(0, 4) : [];
 
   if (!product) {
     return (
@@ -102,7 +43,7 @@ const ProductDetail = () => {
     );
   }
 
-  const p = product as unknown as Product;
+  const p = product as Product;
   const mainImage = selectedImage || p?.image_url;
   const gallery = p?.image_urls && Array.isArray(p.image_urls) 
     ? [p.image_url, ...p.image_urls].filter((url): url is string => !!url) 

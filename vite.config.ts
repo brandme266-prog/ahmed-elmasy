@@ -21,16 +21,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === "development" ? componentTagger() : null,
-    mode === "production" ? prerender({
-      staticDir: path.join(__dirname, 'dist'),
-      routes: ['/', '/products', '/articles', '/services'],
-      renderer: new Renderer({
-        renderAfterDocumentEvent: 'render-event',
-        injectProperty: '__PRERENDER_INJECTED',
-        inject: {}
-      })
-    }) : null
+    mode === "development" ? componentTagger() : null
   ],
   resolve: {
     alias: {

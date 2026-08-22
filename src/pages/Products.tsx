@@ -11,66 +11,9 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
+import { staticProducts, staticCategories, Product } from "@/data/products";
 
-interface Product {
-  id: string;
-  name: string;
-  description?: string;
-  price: number;
-  category_id: string;
-  image_url?: string;
-  slug?: string;
-  categories?: {
-    name: string;
-    slug: string;
-  };
-}
-
-const fallbackCategories = [
-  { id: "c1", name: "عطور رجالية", slug: "men", icon: "👔" },
-  { id: "c2", name: "عطور نسائية", slug: "women", icon: "👗" },
-  { id: "c3", name: "عطور للجنسين", slug: "unisex", icon: "✨" },
-  { id: "c4", name: "عود وبخور", slug: "oud", icon: "🪵" },
-];
-
-const fallbackProducts = [
-  {
-    id: "p1",
-    name: "أورينتال عود",
-    description: "عطر فاخر يمزج بين أصالة العود ولمسات العنبر.",
-    price: 1200,
-    category_id: "c4",
-    image_url: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600",
-    categories: { name: "عود وبخور", slug: "oud" }
-  },
-  {
-    id: "p2",
-    name: "ميدنايت روز",
-    description: "عطر نسائي جذاب برائحة الورد والياسمين.",
-    price: 950,
-    category_id: "c2",
-    image_url: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600",
-    categories: { name: "عطور نسائية", slug: "women" }
-  },
-  {
-    id: "p3",
-    name: "بلاك وود",
-    description: "عطر رجالي قوي برائحة الأخشاب والتوابل.",
-    price: 1100,
-    category_id: "c1",
-    image_url: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600",
-    categories: { name: "عطور رجالية", slug: "men" }
-  },
-  {
-    id: "p4",
-    name: "مسك الحرير",
-    description: "عطر للجنسين بنوتات المسك الصافي والانتعاش.",
-    price: 850,
-    category_id: "c3",
-    image_url: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600",
-    categories: { name: "عطور للجنسين", slug: "unisex" }
-  }
-];
+// Legacy fallbacks removed since we're entirely static now
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -95,27 +38,8 @@ const Products = () => {
     }
   };
 
-  const { data: categories } = useQuery({
-    queryKey: ["categories"],
-    queryFn: async () => {
-      const { data, error } = await supabase.from("categories").select("*").order("created_at");
-      if (error) throw error;
-      return data;
-    },
-  });
-
-  const displayCategories = useMemo(() => {
-    if (!categories || categories.length === 0) return fallbackCategories;
-    
-    // Check if categories are legacy food
-    const isLegacy = categories.some(cat => {
-      const name = cat.name.toLowerCase();
-      return name.includes("دقيق") || name.includes("سكر") || name.includes("مكرونة") || name.includes("توابل") || name.includes("عدس");
-    });
-
-    if (isLegacy) return fallbackCategories;
-    return categories;
-  }, [categories]);
+  // Using static categories
+  const displayCategories = staticCategories;
 
   // Find actual category ID based on slug or ID in URL
   const selectedCategoryObj = useMemo(() => {
@@ -125,30 +49,16 @@ const Products = () => {
 
   const activeCategoryId = selectedCategoryObj?.id || selectedCategory;
 
-  const { data: products, isLoading } = useQuery({
-    queryKey: ["products", activeCategoryId],
-    queryFn: async () => {
-      let query = supabase.from("products").select("*, categories(name, slug)").eq("is_active", true).order("created_at", { ascending: false });
-      if (activeCategoryId) query = query.eq("category_id", activeCategoryId);
-      const { data, error } = await query;
-      if (error) throw error;
-      return data;
-    },
-  });
-
+  // Using static products
+  const isLoading = false;
+  
   const displayProducts = useMemo(() => {
-    if (!products || products.length === 0) return selectedCategory ? [] : fallbackProducts;
-    
-    // Check if the current products are food products
-    const isLegacy = products.some((p: Product) => {
-      const catName = p.categories?.name?.toLowerCase() || "";
-      const pName = p.name.toLowerCase();
-      return catName.includes("دقيق") || catName.includes("سكر") || catName.includes("عدس") || pName.includes("دقيق") || pName.includes("سكر") || pName.includes("عدس");
-    });
-
-    if (isLegacy && !selectedCategory) return fallbackProducts;
+    let products = staticProducts;
+    if (activeCategoryId) {
+      products = products.filter(p => p.category_id === activeCategoryId || p.categories?.slug === activeCategoryId);
+    }
     return products;
-  }, [products, selectedCategory]);
+  }, [activeCategoryId]);
 
   // AI-powered smart search: fuzzy match on name, description, category
   const filteredProducts = useMemo(() => {
