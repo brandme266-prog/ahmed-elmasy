@@ -28,11 +28,17 @@ const ProductDetail = () => {
     queryKey: ["product", id],
     queryFn: async () => {
       // Allow searching by id or slug
-      const { data, error } = await supabase
-        .from("products")
-        .select("*, categories(name, slug)")
-        .or(`id.eq.${id},slug.eq.${id},slug.eq.${decodeURIComponent(id!)}`)
-        .single();
+      let query = supabase.from("products").select("*, categories(name, slug)");
+      
+      const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id!);
+      
+      if (isUUID) {
+        query = query.eq('id', id);
+      } else {
+        query = query.eq('slug', decodeURIComponent(id!));
+      }
+      
+      const { data, error } = await query.single();
         
       if (error) {
         console.warn("Dynamic fetch failed", error);
