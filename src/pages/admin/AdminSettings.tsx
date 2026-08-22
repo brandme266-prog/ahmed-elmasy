@@ -134,7 +134,26 @@ const AdminSettings = () => {
       };
 
       const { error } = await supabase.from("site_settings").upsert(payload);
-      if (error) throw error;
+      
+      if (error) {
+        console.log("Full settings update failed, falling back to basic fields. Error:", error);
+        // Fallback for older schemas that don't have the new columns yet
+        const basicPayload = {
+          id: true,
+          site_name: form.site_name,
+          site_description: form.site_description,
+          logo_url: form.logo_url,
+          favicon_url: form.favicon_url,
+          email: form.email,
+          whatsapp: form.whatsapp,
+          facebook: form.facebook,
+          instagram: form.instagram,
+          tiktok: form.tiktok,
+          google_site_verification: form.google_site_verification
+        };
+        const { error: fallbackError } = await supabase.from("site_settings").upsert(basicPayload);
+        if (fallbackError) throw fallbackError;
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-settings"] });
