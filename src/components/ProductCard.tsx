@@ -89,8 +89,9 @@ const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
               {product.name}
             </h3>
             {product.description && (
-              <p className="text-[11px] md:text-xs text-muted-foreground/80 font-light mb-4 line-clamp-2 leading-relaxed">
-                {product.description}
+              <p className="text-[11px] md:text-xs text-muted-foreground/80 font-light mb-4 line-clamp-2 leading-relaxed"
+                 title={product.description.replace(/<[^>]*>?/gm, '')}>
+                {product.description.replace(/<[^>]*>?/gm, '')}
               </p>
             )}
           </div>
