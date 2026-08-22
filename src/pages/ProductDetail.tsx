@@ -40,7 +40,6 @@ const ProductDetail = () => {
       }
       return data as unknown as Product;
     },
-    initialData: staticProduct,
     staleTime: 1000 * 60, // 1 min
   });
 
@@ -51,7 +50,20 @@ const ProductDetail = () => {
     .filter(p => p.category_id === product.category_id && p.id !== product.id)
     .slice(0, 4) : [];
 
-  if (!product) {
+  const p = product || staticProduct;
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        </div>
+      </div>
+    );
+  }
+
+  if (!p) {
     return (
       <div className="min-h-screen">
         <Navbar />
@@ -67,8 +79,6 @@ const ProductDetail = () => {
       </div>
     );
   }
-
-  const p = product as Product;
   const mainImage = selectedImage || p?.image_url;
   const gallery = p?.image_urls && Array.isArray(p.image_urls) 
     ? [p.image_url, ...p.image_urls].filter((url): url is string => !!url) 

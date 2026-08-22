@@ -62,7 +62,6 @@ const Products = () => {
       }
       return data as unknown as Product[];
     },
-    initialData: staticProducts,
     staleTime: 1000 * 60, // 1 min
   });
 

@@ -51,11 +51,6 @@ const FeaturedProducts = () => {
       
       return data.slice(0, 8);
     },
-    initialData: () => {
-      let fallback = staticProducts.filter(p => p.is_active);
-      if (selectedCategory) fallback = fallback.filter(p => p.category_id === selectedCategory);
-      return fallback.slice(0, 8) as any;
-    },
     staleTime: 1000 * 60,
   });
 
