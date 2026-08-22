@@ -13,14 +13,38 @@ import ProductSchema from "@/components/ProductSchema";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { addItem } = useCart();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Find the product statically based on slug or ID
-  const product = staticProducts.find(p => p.slug === id || p.slug === decodeURIComponent(id!) || p.id === id);
-  const isLoading = false;
+  const staticProduct = staticProducts.find(p => p.slug === id || p.slug === decodeURIComponent(id!) || p.id === id) as Product;
+  
+  const { data: product, isLoading: isQueryLoading } = useQuery({
+    queryKey: ["product", id],
+    queryFn: async () => {
+      // Allow searching by id or slug
+      const { data, error } = await supabase
+        .from("products")
+        .select("*, categories(name, slug)")
+        .or(`id.eq.${id},slug.eq.${id},slug.eq.${decodeURIComponent(id!)}`)
+        .single();
+        
+      if (error) {
+        console.warn("Dynamic fetch failed", error);
+        return staticProduct; // fallback to static if network fails
+      }
+      return data as unknown as Product;
+    },
+    initialData: staticProduct,
+    staleTime: 1000 * 60, // 1 min
+  });
+
+  const isLoading = !product && isQueryLoading;
 
   // Find similar products in the same category, excluding current product
   const similarProducts = product ? staticProducts

@@ -49,16 +49,32 @@ const Products = () => {
 
   const activeCategoryId = selectedCategoryObj?.id || selectedCategory;
 
-  // Using static products
-  const isLoading = false;
+  const { data: dynamicProducts, isLoading: isQueryLoading } = useQuery({
+    queryKey: ["products-all"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*, categories(name, slug)")
+        .order("created_at", { ascending: false });
+      if (error) {
+        console.warn("Dynamic products fetch failed", error);
+        return staticProducts;
+      }
+      return data as unknown as Product[];
+    },
+    initialData: staticProducts,
+    staleTime: 1000 * 60, // 1 min
+  });
+
+  const isLoading = !dynamicProducts && isQueryLoading;
   
   const displayProducts = useMemo(() => {
-    let products = staticProducts;
+    let products = dynamicProducts || staticProducts;
     if (activeCategoryId) {
       products = products.filter(p => p.category_id === activeCategoryId || p.categories?.slug === activeCategoryId);
     }
     return products;
-  }, [activeCategoryId]);
+  }, [activeCategoryId, dynamicProducts]);
 
   // AI-powered smart search: fuzzy match on name, description, category
   const filteredProducts = useMemo(() => {

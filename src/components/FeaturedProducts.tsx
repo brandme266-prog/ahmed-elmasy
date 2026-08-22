@@ -5,6 +5,7 @@ import { Loader2, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { staticProducts, staticCategories } from "@/data/products";
 
 const FeaturedProducts = () => {
   const navigate = useNavigate();
@@ -18,13 +19,16 @@ const FeaturedProducts = () => {
         .from("categories")
         .select("*")
         .order("name");
-      if (error) throw error;
-      // Filter out legacy categories
-      return data.filter(c => !c.name.includes("دقيق") && !c.name.includes("سكر") && !c.name.includes("عدس"));
+      if (error) {
+         console.warn("Categories fetch failed", error);
+         return staticCategories;
+      }
+      return data;
     },
+    initialData: staticCategories
   });
 
-  const { data: products, isLoading } = useQuery({
+  const { data: products, isLoading: isQueryLoading } = useQuery({
     queryKey: ["featured-products", selectedCategory],
     queryFn: async () => {
       let query = supabase
@@ -38,19 +42,24 @@ const FeaturedProducts = () => {
       }
       
       const { data, error } = await query.limit(20);
-      if (error) throw error;
+      if (error) {
+         console.warn("Featured products fetch failed", error);
+         let fallback = staticProducts.filter(p => p.is_active);
+         if (selectedCategory) fallback = fallback.filter(p => p.category_id === selectedCategory);
+         return fallback.slice(0, 8) as any;
+      }
       
-      // Filter out legacy food products
-      const filtered = data.filter(p => {
-        const catName = p.categories?.name?.toLowerCase() || "";
-        const pName = p.name.toLowerCase();
-        const isLegacy = catName.includes("دقيق") || catName.includes("سكر") || catName.includes("عدس") || pName.includes("دقيق") || pName.includes("سكر") || pName.includes("عدس");
-        return !isLegacy;
-      });
-      
-      return filtered.slice(0, 8);
+      return data.slice(0, 8);
     },
+    initialData: () => {
+      let fallback = staticProducts.filter(p => p.is_active);
+      if (selectedCategory) fallback = fallback.filter(p => p.category_id === selectedCategory);
+      return fallback.slice(0, 8) as any;
+    },
+    staleTime: 1000 * 60,
   });
+
+  const isLoading = !products && isQueryLoading;
 
   if (isLoading) {
     return (
