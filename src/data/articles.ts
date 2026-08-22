@@ -118,7 +118,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-1",
     title: "كل ما تود معرفته عن سترونجر إنتنسلي - مراجعة شاملة وتقييم الأداء",
     slug: "سترونجر-إنتنسلي-Stronger-Intensely-–-عطر-رجالي-دافئ-وجذاب-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225576941-vkrm7.jpg", 
     excerpt: "مراجعة تفصيلية لعطر سترونجر إنتنسلي. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور الرجالية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر سترونجر إنتنسلي كل هذا الاهتمام؟</h2>
@@ -161,7 +161,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-2",
     title: "كل ما تود معرفته عن باكدج بربري هير ومسك ومان ميكس - مراجعة شاملة وتقييم الأداء",
     slug: "باكدج-فري-سيكسي-50-مل-–-بربري-هير-ومسك-ومان-ميكس-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225134601-oou0v8.jpg", 
     excerpt: "مراجعة تفصيلية لعطر باكدج بربري هير ومسك ومان ميكس. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور النسائية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر باكدج بربري هير ومسك ومان ميكس كل هذا الاهتمام؟</h2>
@@ -204,7 +204,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-3",
     title: "كل ما تود معرفته عن عطر DG – فري سيكسي ميكس - مراجعة شاملة وتقييم الأداء",
     slug: "باكدج-عطر-DG-–-فري-سيكسي-ميكس-50-مل-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225224359-9p9jf.jpg", 
     excerpt: "مراجعة تفصيلية لعطر عطر DG – فري سيكسي ميكس. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور النسائية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر عطر DG – فري سيكسي ميكس كل هذا الاهتمام؟</h2>
@@ -247,7 +247,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-4",
     title: "كل ما تود معرفته عن باكدج عطر DG الفاخر - مراجعة شاملة وتقييم الأداء",
     slug: "باكدج-DG-–-عطر-DG-50-مل-+-10-مل-+-زيت-عطري-فاخر-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225297371-22tfrrh.jpg", 
     excerpt: "مراجعة تفصيلية لعطر باكدج عطر DG الفاخر. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور النسائية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر باكدج عطر DG الفاخر كل هذا الاهتمام؟</h2>
@@ -290,7 +290,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-5",
     title: "كل ما تود معرفته عن الترا ميل Ultra Male - مراجعة شاملة وتقييم الأداء",
     slug: "الترا-ميل-Ultra-Male-–-عطر-رجالي-جذاب-بحضور-قوي-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225411750-bkxb93.jpg", 
     excerpt: "مراجعة تفصيلية لعطر الترا ميل Ultra Male. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور الرجالية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر الترا ميل Ultra Male كل هذا الاهتمام؟</h2>
@@ -333,7 +333,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-6",
     title: "كل ما تود معرفته عن هوس الإكسير (Hawas Elixir) - مراجعة شاملة وتقييم الأداء",
     slug: "هوس-الإكسير-–-عطر-رجالي-فاخر-وجذاب-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225676181-s9nf.jpg", 
     excerpt: "مراجعة تفصيلية لعطر هوس الإكسير (Hawas Elixir). تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور الرجالية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر هوس الإكسير (Hawas Elixir) كل هذا الاهتمام؟</h2>
@@ -376,7 +376,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-7",
     title: "كل ما تود معرفته عن هوس إكس – Hoss X - مراجعة شاملة وتقييم الأداء",
     slug: "هوس-إكس-hoss-x-عطر-رجالي-أنيق-وجذاب-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225759212-mdzvfu.jpg", 
     excerpt: "مراجعة تفصيلية لعطر هوس إكس – Hoss X. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور الرجالية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر هوس إكس – Hoss X كل هذا الاهتمام؟</h2>
@@ -419,7 +419,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-8",
     title: "كل ما تود معرفته عن باكدج مسك رمان - مراجعة شاملة وتقييم الأداء",
     slug: "باكدج-برفان-مسك-رمان-–-50-مل-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787224986375-nnu0hg.jpg", 
     excerpt: "مراجعة تفصيلية لعطر باكدج مسك رمان. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور النسائية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر باكدج مسك رمان كل هذا الاهتمام؟</h2>
@@ -462,7 +462,7 @@ export const staticArticles: Article[] = [
     id: "prod-art-9",
     title: "كل ما تود معرفته عن عطر فيري سيكسي - Very Sexy - مراجعة شاملة وتقييم الأداء",
     slug: "very-sexy-perfume-50ml-review",
-    image_url: "https://ahmedalmasi.com/hero-main.jpg", 
+    image_url: "https://images.unsplash.com/photo-1594035910387-fea47794261f", 
     excerpt: "مراجعة تفصيلية لعطر عطر فيري سيكسي - Very Sexy. تعرف على الهرم العطري، قوة الثبات، والفوحان، ولماذا يعتبر من أفضل العطور النسائية في السوق.",
     content: `
       <h2>المقدمة: لماذا يثير عطر عطر فيري سيكسي - Very Sexy كل هذا الاهتمام؟</h2>
