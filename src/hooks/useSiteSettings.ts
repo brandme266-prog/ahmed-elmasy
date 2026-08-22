@@ -60,10 +60,17 @@ export const useSiteSettings = () => {
       
       // Merge database settings with defaults.
       // This allows the Admin panel to control the images, stats, and text.
-      return { 
+      const finalSettings = { 
         ...DEFAULT_SETTINGS,
         ...settings 
       };
+
+      // Force correct whatsapp number if the old one is still in the DB
+      if (finalSettings.whatsapp === "01000592469") {
+        finalSettings.whatsapp = "01008246179";
+      }
+
+      return finalSettings;
     },
     staleTime: 1000 * 30, // 30 seconds
   });
