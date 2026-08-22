@@ -49,14 +49,11 @@ const ProductDetail = () => {
     staleTime: 1000 * 60, // 1 min
   });
 
-  const isLoading = !product && isQueryLoading;
-
-  // Find similar products in the same category, excluding current product
+  const p = product || staticProduct;
+  const isLoading = !p && isQueryLoading;
   const similarProducts = product ? staticProducts
     .filter(p => p.category_id === product.category_id && p.id !== product.id)
     .slice(0, 4) : [];
-
-  const p = product || staticProduct;
 
   if (isLoading) {
     return (
@@ -218,7 +215,7 @@ const ProductDetail = () => {
 
               {product.description && (
                 <div 
-                  className="prose prose-lg dark:prose-invert max-w-none mb-8 font-cairo text-muted-foreground leading-relaxed prose-headings:text-foreground prose-h2:text-2xl prose-h3:text-xl prose-h3:text-primary prose-strong:text-foreground prose-p:mb-4 prose-ul:mb-4 prose-ul:list-disc prose-ul:pl-4 prose-li:mb-2"
+                  className="prose prose-lg dark:prose-invert max-w-none mb-8 font-cairo text-muted-foreground leading-relaxed prose-headings:text-foreground prose-h2:text-2xl prose-h3:text-xl prose-h3:text-primary prose-strong:text-foreground prose-p:mb-4 prose-ul:mb-4 prose-ul:list-disc prose-ul:pl-4 prose-li:mb-2 whitespace-pre-line"
                   dir="auto"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
