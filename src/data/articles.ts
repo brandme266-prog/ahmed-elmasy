@@ -150,7 +150,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن سترونجر إنتنسلي هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/سترونجر-إنتنسلي-Stronger-Intensely-–-عطر-رجالي-دافئ-وجذاب" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر سترونجر إنتنسلي الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -193,7 +193,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن باكدج بربري هير ومسك ومان ميكس هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/باكدج-فري-سيكسي-50-مل-–-بربري-هير-ومسك-ومان-ميكس" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر باكدج بربري هير ومسك ومان ميكس الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -236,7 +236,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن عطر DG – فري سيكسي ميكس هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/باكدج-عطر-DG-–-فري-سيكسي-ميكس-50-مل" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر عطر DG – فري سيكسي ميكس الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -279,7 +279,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن باكدج عطر DG الفاخر هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/باكدج-DG-–-عطر-DG-50-مل-+-10-مل-+-زيت-عطري-فاخر" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر باكدج عطر DG الفاخر الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -322,7 +322,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن الترا ميل Ultra Male هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/الترا-ميل-Ultra-Male-–-عطر-رجالي-جذاب-بحضور-قوي" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر الترا ميل Ultra Male الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -365,7 +365,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن هوس الإكسير (Hawas Elixir) هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/هوس-الإكسير-–-عطر-رجالي-فاخر-وجذاب" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر هوس الإكسير (Hawas Elixir) الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -408,7 +408,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن هوس إكس – Hoss X هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/هوس-إكس-hoss-x-عطر-رجالي-أنيق-وجذاب" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر هوس إكس – Hoss X الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -451,7 +451,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن باكدج مسك رمان هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/باكدج-برفان-مسك-رمان-–-50-مل" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر باكدج مسك رمان الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
@@ -494,7 +494,7 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر يجمع بين الجودة العالية، السعر المناسب، والأداء الخرافي، فإن عطر فيري سيكسي - Very Sexy هو استثمار مضمون في أناقتك.</p>
       
       <div style="margin-top: 30px; text-align: center;">
-        <a href="/products/very-sexy-perfume-50ml" style="display: inline-block; background-color: #d4af37; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">اضغط هنا لشراء عطر عطر فيري سيكسي - Very Sexy الآن بأفضل سعر</a>
+        
       </div>
     `,
     author: "أحمد الماسي",
