@@ -88,7 +88,7 @@ const AdminOrders = () => {
     const htmlContent = `
       <html dir="rtl" lang="ar">
         <head>
-          <title>تصريح خروج - طلب #${order.id.split('-')[0]}</title>
+          <title>فاتورة مبيعات - طلب #${order.id.split('-')[0]}</title>
           <style>
             body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; color: #333; }
             .header { text-align: center; border-bottom: 2px solid #ddd; padding-bottom: 20px; margin-bottom: 30px; }
@@ -115,7 +115,7 @@ const AdminOrders = () => {
         </head>
         <body>
           <div class="header">
-            <h1 class="title">تصريح خروج / إذن تسليم</h1>
+            <h1 class="title">فاتورة مبيعات</h1>
             <p class="subtitle">رقم الطلب: ${order.id}</p>
             <p class="subtitle">تاريخ الطلب: ${new Date(order.created_at).toLocaleDateString("ar-EG")}</p>
           </div>
@@ -173,7 +173,7 @@ const AdminOrders = () => {
           </div>
 
           <div class="footer">
-            هذا المستند يعتبر تصريح خروج رسمي من مخازن أحمد الماسي.
+            هذا المستند يعتبر فاتورة مبيعات رسمية وإذن تسليم من مخازن أحمد الماسي.
           </div>
           <script>
             window.onload = function() {
@@ -323,7 +323,7 @@ const AdminOrders = () => {
                   className="font-cairo gap-2 w-full sm:w-auto"
                 >
                   <Printer className="w-4 h-4" />
-                  طباعة تصريح الخروج
+                  طباعة الفاتورة
                 </Button>
               </div>
             </div>
