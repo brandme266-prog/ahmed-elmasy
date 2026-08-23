@@ -56,8 +56,8 @@ const Products = () => {
         .from("products")
         .select("*, categories(name, slug)")
         .order("created_at", { ascending: false });
-      if (error) {
-        console.warn("Dynamic products fetch failed", error);
+      if (error || !data || data.length === 0) {
+        if (error) console.warn("Dynamic products fetch failed", error);
         return staticProducts;
       }
       return data as unknown as Product[];

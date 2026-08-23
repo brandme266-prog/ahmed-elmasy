@@ -35,7 +35,7 @@ const ProductDetail = () => {
       if (isUUID) {
         query = query.eq('id', id);
       } else {
-        query = query.eq('slug', decodeURIComponent(id!));
+        query = query.eq('slug' as any, decodeURIComponent(id!));
       }
       
       const { data, error } = await query.single();

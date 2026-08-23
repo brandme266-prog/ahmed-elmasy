@@ -19,8 +19,8 @@ const FeaturedProducts = () => {
         .from("categories")
         .select("*")
         .order("name");
-      if (error) {
-         console.warn("Categories fetch failed", error);
+      if (error || !data || data.length === 0) {
+         if (error) console.warn("Categories fetch failed", error);
          return staticCategories;
       }
       return data;
@@ -42,8 +42,8 @@ const FeaturedProducts = () => {
       }
       
       const { data, error } = await query.limit(20);
-      if (error) {
-         console.warn("Featured products fetch failed", error);
+      if (error || !data || data.length === 0) {
+         if (error) console.warn("Featured products fetch failed", error);
          let fallback = staticProducts.filter(p => p.is_active);
          if (selectedCategory) fallback = fallback.filter(p => p.category_id === selectedCategory);
          return fallback.slice(0, 8) as any;
