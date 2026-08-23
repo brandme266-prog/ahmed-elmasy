@@ -533,7 +533,7 @@ export const staticArticles: Article[] = [
     id: "bride-offer-5",
     title: "عرض عروسة من أحمد الماسي: 5 عطور فرمونية تضمن لكِ جاذبية لا تُقاوم",
     slug: "bride-offer-5-pheromone-perfumes",
-    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787491876818.img",
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225134601-oou0v8.jpg",
     excerpt: "تجهيزات العروس لا تكتمل بدون العطور الفرمونية. تعرفي على عرض العروسة الذي يضم 5 ميكسات عطرية عالية الجودة لجاذبية ساحرة.",
     content: `
       <h2>لماذا تحتاج كل عروس للعطور الفرمونية؟</h2>
@@ -558,7 +558,7 @@ export const staticArticles: Article[] = [
     id: "angel-lova-perfume",
     title: "عطر انجل لوفا: سر الجاذبية والأنوثة السويتية في زجاجة واحدة",
     slug: "angel-lova-sweet-sexy-perfume",
-    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787491876818.img",
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225297371-22tfrrh.jpg",
     excerpt: "اكتشفي عطر انجل لوفا السويتي والمميز، المصمم خصيصاً ليخطف القلب ويمنحك جاذبية استثنائية في أوقاتك الخاصة.",
     content: `
       <h2>عطر انجل لوفا: حين تلتقي الرقة بالجاذبية</h2>
@@ -578,7 +578,7 @@ export const staticArticles: Article[] = [
     id: "pomegranate-musk",
     title: "مسك الرمان: سحر الأنوثة والفوحان الثابت لكل عروس",
     slug: "pomegranate-musk-feminine-perfume",
-    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787491876818.img",
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787224986375-nnu0hg.jpg",
     excerpt: "مسك الرمان، العطر الأنثوي الثابت والفواح. تعرفي على سر جمال هذه الرائحة ولماذا تعتبر الخيار المفضل للعرايس.",
     content: `
       <h2>مسك الرمان: أكثر من مجرد عطر</h2>
