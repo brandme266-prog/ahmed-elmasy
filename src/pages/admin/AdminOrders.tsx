@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Loader2, Search, ShoppingBag, Filter } from "lucide-react";
+import { Loader2, Search, ShoppingBag, Filter, Printer } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,9 @@ interface AdminOrder {
   quantity: number;
   status: string;
   created_at: string;
+  customer_email?: string | null;
   notes?: string | null;
+  products?: { price: number } | null;
 }
 
 const AdminOrders = () => {
@@ -37,7 +39,7 @@ const AdminOrders = () => {
   const { data: orders = [], isLoading } = useQuery<AdminOrder[], Error>({
     queryKey: ["admin-orders"],
     queryFn: async () => {
-      const { data, error } = await supabase.from<AdminOrder>("orders").select("*").order("created_at", { ascending: false });
+      const { data, error } = await supabase.from("orders").select("*, products(price)").order("created_at", { ascending: false });
       if (error) {
         console.warn("AdminOrders load failed", error);
         return [];
@@ -62,6 +64,118 @@ const AdminOrders = () => {
     const matchStatus = statusFilter === "all" || o.status === statusFilter;
     return matchSearch && matchStatus;
   }) || [];
+
+  const handlePrint = (order: AdminOrder) => {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      toast.error("يرجى السماح بالنوافذ المنبثقة (Pop-ups) لطباعة الفاتورة");
+      return;
+    }
+
+    const htmlContent = `
+      <html dir="rtl" lang="ar">
+        <head>
+          <title>تصريح خروج - طلب #${order.id.split('-')[0]}</title>
+          <style>
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; color: #333; }
+            .header { text-align: center; border-bottom: 2px solid #ddd; padding-bottom: 20px; margin-bottom: 30px; }
+            .logo { max-width: 120px; margin-bottom: 15px; }
+            .title { font-size: 24px; font-weight: bold; margin: 0; color: #111; }
+            .subtitle { color: #666; margin-top: 5px; }
+            .details-container { display: flex; justify-content: space-between; margin-bottom: 30px; }
+            .box { border: 1px solid #ddd; padding: 15px; border-radius: 8px; width: 45%; }
+            .box h3 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 16px; }
+            .row { margin-bottom: 8px; font-size: 14px; }
+            .label { font-weight: bold; color: #555; display: inline-block; width: 80px; }
+            table { w-full; width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border: 1px solid #ddd; padding: 12px; text-align: right; }
+            th { background-color: #f9f9f9; font-weight: bold; }
+            .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #777; border-top: 1px solid #ddd; padding-top: 20px; }
+            .signature { margin-top: 40px; display: flex; justify-content: space-between; padding: 0 40px; }
+            .sig-box { text-align: center; }
+            .sig-line { width: 150px; border-bottom: 1px solid #333; margin-top: 40px; }
+            @media print {
+              body { padding: 0; }
+              @page { margin: 20mm; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1 class="title">تصريح خروج / إذن تسليم</h1>
+            <p class="subtitle">رقم الطلب: ${order.id}</p>
+            <p class="subtitle">تاريخ الطلب: ${new Date(order.created_at).toLocaleDateString("ar-EG")}</p>
+          </div>
+          
+          <div class="details-container">
+            <div class="box">
+              <h3>بيانات العميل</h3>
+              <div class="row"><span class="label">الاسم:</span> ${order.customer_name}</div>
+              <div class="row"><span class="label">رقم الهاتف:</span> <span dir="ltr">${order.customer_phone}</span></div>
+              <div class="row"><span class="label">البريد:</span> ${order.customer_email || 'لا يوجد'}</div>
+            </div>
+            <div class="box">
+              <h3>معلومات التسليم</h3>
+              <div class="row"><span class="label">الحالة:</span> ${statusMap[order.status]?.label || order.status}</div>
+              <div class="row"><span class="label">تاريخ الطباعة:</span> ${new Date().toLocaleDateString("ar-EG")}</div>
+            </div>
+          </div>
+
+          <h3>محتويات الطلب</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>اسم المنتج</th>
+                <th>سعر الوحدة</th>
+                <th>الكمية</th>
+                <th>الإجمالي</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${order.product_name}</td>
+                <td>${order.products?.price ? Number(order.products.price).toLocaleString("ar-EG") + ' ج.م' : '-'}</td>
+                <td>${order.quantity}</td>
+                <td><strong>${order.products?.price ? Number(order.products.price * order.quantity).toLocaleString("ar-EG") + ' ج.م' : '-'}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          ${order.notes ? `
+          <div style="margin-top: 30px;">
+            <h3>ملاحظات العميل:</h3>
+            <p style="background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee;">${order.notes}</p>
+          </div>
+          ` : ''}
+
+          <div class="signature">
+            <div class="sig-box">
+              <p>توقيع مسؤول المخزن / الأمن</p>
+              <div class="sig-line"></div>
+            </div>
+            <div class="sig-box">
+              <p>توقيع المستلم / المندوب</p>
+              <div class="sig-line"></div>
+            </div>
+          </div>
+
+          <div class="footer">
+            هذا المستند يعتبر تصريح خروج رسمي من مخازن أحمد الماسي.
+          </div>
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+
+    printWindow.document.open();
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
 
   return (
     <div className="space-y-6">
@@ -162,6 +276,16 @@ const AdminOrders = () => {
               {selectedOrder.notes && (
                 <div><p className="text-muted-foreground">ملاحظات</p><p className="bg-secondary/50 rounded-lg p-3 mt-1">{selectedOrder.notes}</p></div>
               )}
+              
+              <div className="pt-4 mt-4 border-t flex justify-end">
+                <Button 
+                  onClick={() => handlePrint(selectedOrder)} 
+                  className="font-cairo gap-2 w-full sm:w-auto"
+                >
+                  <Printer className="w-4 h-4" />
+                  طباعة تصريح الخروج
+                </Button>
+              </div>
             </div>
           )}
         </DialogContent>

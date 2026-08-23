@@ -35,7 +35,8 @@ const ProductDetail = () => {
       if (isUUID) {
         query = query.eq('id', id);
       } else {
-        query = query.eq('slug' as any, decodeURIComponent(id!));
+        // @ts-ignore - slug is used for static fallback but missing in Supabase types
+        query = query.eq('slug', decodeURIComponent(id!));
       }
       
       const { data, error } = await query.single();
