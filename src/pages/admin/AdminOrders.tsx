@@ -5,9 +5,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Loader2, Search, ShoppingBag, Filter, Printer } from "lucide-react";
+import { Loader2, Search, ShoppingBag, Filter, Printer, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
 const statusMap: Record<string, { label: string; variant: "default" | "secondary" | "destructive" | "outline" }> = {
@@ -56,6 +57,18 @@ const AdminOrders = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
       toast.success("تم تحديث الحالة");
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("orders").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+      toast.success("تم حذف الطلب بنجاح");
+      setSelectedOrder(null);
     },
   });
 
@@ -224,6 +237,7 @@ const AdminOrders = () => {
                 <TableHead className="font-cairo font-bold">الكمية</TableHead>
                 <TableHead className="font-cairo font-bold">الحالة</TableHead>
                 <TableHead className="font-cairo font-bold">التاريخ</TableHead>
+                <TableHead className="font-cairo font-bold text-center">حذف</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -249,6 +263,32 @@ const AdminOrders = () => {
                   </TableCell>
                   <TableCell className="font-cairo text-sm text-muted-foreground">
                     {new Date(o.created_at).toLocaleDateString("ar-EG")}
+                  </TableCell>
+                  <TableCell onClick={(e) => e.stopPropagation()} className="text-center">
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button size="icon" variant="ghost" className="text-destructive h-8 w-8 hover:bg-destructive/10">
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent dir="rtl">
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="font-cairo">حذف الطلب</AlertDialogTitle>
+                          <AlertDialogDescription className="font-cairo">
+                            هل أنت متأكد من حذف هذا الطلب بشكل نهائي؟ لا يمكن التراجع عن هذا الإجراء.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter className="flex-row-reverse gap-2">
+                          <AlertDialogCancel className="font-cairo">إلغاء</AlertDialogCancel>
+                          <AlertDialogAction 
+                            onClick={() => deleteMutation.mutate(o.id)} 
+                            className="font-cairo bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                          >
+                            نعم، احذف الطلب
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </TableCell>
                 </TableRow>
               ))}
