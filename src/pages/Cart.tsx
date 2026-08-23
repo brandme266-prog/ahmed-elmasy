@@ -153,7 +153,7 @@ const Cart = () => {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <Link to={`/products/${item.id}`}>
+                        <Link to={`/products/${item.slug || item.id}`}>
                           <h3 className="font-cairo font-bold text-foreground hover:text-primary transition-colors truncate">
                             {item.name}
                           </h3>

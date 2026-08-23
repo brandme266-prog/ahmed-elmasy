@@ -33,7 +33,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, finalPrice }) =>
     },
     "offers": {
       "@type": "Offer",
-      "url": typeof window !== 'undefined' ? window.location.href : `https://ahmedalmasi.com/products/${product.id}`,
+      "url": typeof window !== 'undefined' ? window.location.href : `https://ahmedalmasi.com/products/${product.slug || product.id}`,
       "priceCurrency": "EGP",
       "price": finalPrice,
       "availability": product.stock_quantity === null || product.stock_quantity > 0 

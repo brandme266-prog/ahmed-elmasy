@@ -257,7 +257,7 @@ const ProductDetail = () => {
                 <ProductCard
                   key={p.id}
                   product={p}
-                  linkTo={`/products/${p.id}`}
+                  linkTo={`/products/${p.slug || p.id}`}
                 />
               ))}
             </div>
