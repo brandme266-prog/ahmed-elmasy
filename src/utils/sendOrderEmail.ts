@@ -8,8 +8,7 @@ export const sendOrderEmail = async (orderDetails: {
   totalPrice?: number;
 }) => {
   const accessKeys = [
-    "3f68b1b7-d402-4de3-97cc-6be0feedc2d0", 
-    "96d8783a-0286-4627-8c1a-8553aee83a19"
+    "84c64417-950b-4be4-98a6-b0694dfd977e", // This is the only valid key that worked
   ];
 
   // Format the items into a readable list

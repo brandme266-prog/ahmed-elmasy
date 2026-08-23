@@ -1,121 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- الصفحة الرئيسية -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
     <loc>https://ahmedalmasi.com/</loc>
-    <lastmod>2024-08-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
   </url>
-
-  <!-- صفحة المنتجات (العطور) -->
   <url>
     <loc>https://ahmedalmasi.com/products</loc>
-    <lastmod>2024-08-22</lastmod>
-    <changefreq>weekly</changefreq>
+    
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- صفحة المقالات الرئيسية -->
   <url>
     <loc>https://ahmedalmasi.com/articles</loc>
-    <lastmod>2024-08-22</lastmod>
+    
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- صفحة الخدمات -->
   <url>
     <loc>https://ahmedalmasi.com/services</loc>
-    <lastmod>2024-08-20</lastmod>
+    
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-
-  <!-- مقالة: مراجعة عطر رصاصي هوس إكسير Hawas Elixir -->
   <url>
-    <loc>https://ahmedalmasi.com/articles/hawas-elixir-rasasi-review</loc>
-    <lastmod>2024-08-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://ahmedalmasi.com/products/سترونجر-إنتنسلي-Stronger-Intensely-–-عطر-رجالي-دافئ-وجذاب</loc>
+    <lastmod>2026-08-20T11:33:03.898Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <news:news>
-      <news:publication>
-        <news:name>مدونة أحمد الماسي للعطور</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2024-08-20</news:publication_date>
-      <news:title>مراجعة شاملة: عطر رصاصي هوس إكسير (Hawas Elixir) - هل يستحق الشراء في 2024؟</news:title>
-    </news:news>
-    <image:image>
-      <image:loc>https://images.unsplash.com/photo-1594035910387-fea47794261f</image:loc>
-      <image:title>عطر رصاصي هوس إكسير Hawas Elixir</image:title>
-    </image:image>
   </url>
-
-  <!-- مقالة: الدليل الشامل لاختيار العطر المناسب -->
+  <url>
+    <loc>https://ahmedalmasi.com/products/باكدج-فري-سيكسي-50-مل-–-بربري-هير-ومسك-ومان-ميكس</loc>
+    <lastmod>2026-08-22T10:52:24.524Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/باكدج-عطر-DG-–-فري-سيكسي-ميكس-50-مل</loc>
+    <lastmod>2026-08-22T10:52:30.746Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/الترا-ميل-Ultra-Male-–-عطر-رجالي-جذاب-بحضور-قوي</loc>
+    <lastmod>2026-08-20T11:30:21.025Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/باكدج-DG-–-عطر-DG-50-مل-+-10-مل-+-زيت-عطري-فاخر</loc>
+    <lastmod>2026-08-22T10:52:50.986Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/هوس-الإكسير-–-عطر-رجالي-فاخر-وجذاب</loc>
+    <lastmod>2026-08-20T11:34:52.314Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/very-sexy-perfume-50ml</loc>
+    <lastmod>2026-08-22T10:34:49.192Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/باكدج-برفان-مسك-رمان-–-50-مل</loc>
+    <lastmod>2026-08-22T10:52:40.211Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/هوس-إكس-–-Hoss-X-|-عطر-رجالي-أنيق-وجذاب</loc>
+    <lastmod>2026-08-22T10:34:34.545Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/37770f21-14d6-4e30-8d4a-eeacdc19b718</loc>
+    <lastmod>2026-08-22T19:15:11.941Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/60f60ff0-efe6-484f-98dd-3a2967d26279</loc>
+    <lastmod>2026-08-22T19:19:00.206Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahmedalmasi.com/products/556db0eb-ebf0-4eb7-8a26-0a518175612f</loc>
+    <lastmod>2026-08-23T12:29:47.773Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://ahmedalmasi.com/articles/how-to-choose-perfume</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2026-08-18T09:34:16.230Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <news:news>
-      <news:publication>
-        <news:name>مدونة أحمد الماسي للعطور</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2024-05-10</news:publication_date>
-      <news:title>الدليل الشامل: كيف تختار العطر المناسب لشخصيتك وكيمياء جسمك؟</news:title>
-    </news:news>
-    <image:image>
-      <image:loc>https://images.unsplash.com/photo-1594035910387-fea47794261f</image:loc>
-      <image:title>كيف تختار العطر المناسب لشخصيتك</image:title>
-    </image:image>
   </url>
-
-  <!-- مقالة: العطور الصيفية مقابل الشتوية -->
   <url>
     <loc>https://ahmedalmasi.com/articles/summer-vs-winter-perfumes</loc>
-    <lastmod>2024-06-15</lastmod>
+    <lastmod>2026-08-18T09:34:16.230Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <news:news>
-      <news:publication>
-        <news:name>مدونة أحمد الماسي للعطور</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2024-06-15</news:publication_date>
-      <news:title>مقارنة حاسمة: العطور الصيفية مقابل العطور الشتوية - ماذا تختار؟</news:title>
-    </news:news>
-    <image:image>
-      <image:loc>https://images.unsplash.com/photo-1588405748880-12d1d2a59f75</image:loc>
-      <image:title>الفرق بين العطور الصيفية والشتوية</image:title>
-    </image:image>
   </url>
-
-  <!-- مقالة: نصائح لثبات رائحة العطر -->
-  <url>
-    <loc>https://ahmedalmasi.com/articles/long-lasting-perfume-tips</loc>
-    <lastmod>2024-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <news:news>
-      <news:publication>
-        <news:name>مدونة أحمد الماسي للعطور</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2024-07-01</news:publication_date>
-      <news:title>كيف تحافظ على رائحة عطرك طوال اليوم؟ نصائح ذهبية للثبات</news:title>
-    </news:news>
-    <image:image>
-      <image:loc>https://images.unsplash.com/photo-1592945403244-b3fbafd7f539</image:loc>
-      <image:title>نصائح لثبات رائحة العطر طوال اليوم</image:title>
-    </image:image>
-  </url>
-
 </urlset>
