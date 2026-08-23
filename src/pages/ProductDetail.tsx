@@ -35,7 +35,6 @@ const ProductDetail = () => {
       if (isUUID) {
         query = query.eq('id', id);
       } else {
-        // @ts-ignore - slug is used for static fallback but missing in Supabase types
         query = query.eq('slug', decodeURIComponent(id!));
       }
       

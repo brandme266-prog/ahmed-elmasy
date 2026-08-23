@@ -47,6 +47,7 @@ interface ProductForm {
   category_id: string;
   is_featured: boolean;
   is_active: boolean;
+  slug: string;
 }
 
 interface Product {
@@ -63,6 +64,7 @@ interface Product {
   is_active: boolean;
   created_at: string;
   categories?: { name: string } | null;
+  slug?: string | null;
 }
 
 const emptyForm: ProductForm = { 
@@ -75,7 +77,8 @@ const emptyForm: ProductForm = {
   image_urls: [], 
   category_id: "", 
   is_featured: false, 
-  is_active: true 
+  is_active: true,
+  slug: ""
 };
 
 const AdminProducts = () => {
@@ -109,6 +112,7 @@ const AdminProducts = () => {
     mutationFn: async () => {
       const payload = {
         name: form.name,
+        slug: form.slug ? form.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : null,
         description: form.description || null,
         price: parseFloat(form.price) || 0,
         unit: form.unit || "مل",
@@ -210,6 +214,7 @@ const AdminProducts = () => {
       category_id: p.category_id || "",
       is_featured: !!p.is_featured,
       is_active: !!p.is_active,
+      slug: p.slug || "",
     });
     setDialogOpen(true);
   };
@@ -343,6 +348,14 @@ const AdminProducts = () => {
                         <Package2 className="w-4 h-4 text-primary" /> اسم المنتج *
                       </label>
                       <Input placeholder="مثلاً: مسك الحرير 50 مل" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="font-cairo h-12" />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-cairo font-bold flex items-center gap-2">
+                        الرابط المخصص (Slug)
+                      </label>
+                      <Input placeholder="مثال: misk-al-hareer" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} className="font-en h-12" dir="ltr" />
+                      <p className="text-[11px] text-muted-foreground font-cairo">سيظهر هكذا: ahmedalmasi.com/products/misk-al-hareer</p>
                     </div>
 
                     <div className="space-y-1.5">
