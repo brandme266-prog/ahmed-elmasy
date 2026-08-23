@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Loader2, Package, MapPin } from "lucide-react";
 
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { sendOrderEmail } from "@/utils/sendOrderEmail";
 
 // Split the token to avoid GitHub Secret Scanner false positives for public keys
 const MAPBOX_TOKEN = ["pk.eyJ1IjoiaGtnamhmYmZ", "2emQiLCJhIjoiY200eHo1MGxoMHR2cjJt", "czhkZGthcXdzMCJ9.0cagdqC-ZhTdRhgrx5bx8A"].join("");
@@ -79,6 +80,17 @@ const Cart = () => {
     if (error) {
       toast.error("حدث خطأ، حاول مرة أخرى");
     } else {
+      // Send email notification
+      await sendOrderEmail({
+        customerName: form.name.trim(),
+        customerPhone: form.phone.trim(),
+        customerAddress: fullAddress,
+        customerEmail: form.email.trim(),
+        notes: form.notes.trim(),
+        items: items.map(i => ({ name: i.name, quantity: i.quantity, price: i.price })),
+        totalPrice: totalPrice
+      });
+
       toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الطلب.");
       clearCart();
       setForm({ name: "", phone: "", address: "", email: "", notes: "" });

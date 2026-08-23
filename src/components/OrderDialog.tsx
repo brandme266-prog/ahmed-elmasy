@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { sendOrderEmail } from "@/utils/sendOrderEmail";
 
 interface OrderDialogProps {
   open: boolean;
@@ -38,6 +39,15 @@ const OrderDialog = ({ open, onOpenChange, product }: OrderDialogProps) => {
     if (error) {
       toast.error("حدث خطأ، حاول مرة أخرى");
     } else {
+      // Send email notification
+      await sendOrderEmail({
+        customerName: form.name,
+        customerPhone: form.phone,
+        customerEmail: form.email,
+        notes: form.notes,
+        items: [{ name: product.name, quantity: form.quantity }]
+      });
+
       toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الطلب.");
       setForm({ name: "", phone: "", email: "", notes: "", quantity: 1 });
       onOpenChange(false);
