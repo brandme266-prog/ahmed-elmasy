@@ -15,7 +15,7 @@ export const staticArticles: Article[] = [
     id: "a4",
     title: "مراجعة شاملة: عطر رصاصي هوس إكسير (Hawas Elixir) - هل يستحق الشراء في 2024؟",
     slug: "hawas-elixir-rasasi-review",
-    image_url: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=1200",
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225576941-vkrm7.jpg",
     excerpt: "تعرف على كل تفاصيل عطر رصاصي هوس إكسير الجديد للجنسين. تقييم شامل للمكونات، الثبات، الفوحان، ومقارنة بالسعر لمساعدتك في اتخاذ قرار الشراء.",
     content: `
       <h2>مقدمة عن عطر رصاصي هوس إكسير (Hawas Elixir)</h2>
@@ -44,14 +44,14 @@ export const staticArticles: Article[] = [
       <p>إذا كنت تبحث عن عطر فريد يجمع بين نضارة البدايات وعمق ونضج النهايات، ويقدم لك <strong>أداءً يتفوق على الكثير من عطور النيش باهظة الثمن</strong>، فإن هوس إكسير هو استثمار رائع لمجموعتك العطرية لعام 2024.</p>
     `,
     author: "خبراء العطور - أحمد الماسي",
-    published_at: "2024-08-20T10:00:00Z",
-    created_at: "2024-08-20T10:00:00Z"
+    published_at: "2026-08-20T10:00:00Z",
+    created_at: "2026-08-20T10:00:00Z"
   },
   {
     id: "a1",
     title: "الدليل الشامل: كيف تختار العطر المناسب لشخصيتك وكيمياء جسمك؟",
     slug: "how-to-choose-perfume",
-    image_url: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=1200",
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225134601-oou0v8.jpg",
     excerpt: "تعلم أسرار اختيار العطر المثالي الذي يعكس شخصيتك ويتناسب مع كيمياء جسمك، وتعرف على الفروق بين العائلات العطرية المختلفة لضمان ثبات يدوم طويلاً.",
     content: `
       <h2>لماذا يختلف العطر من شخص لآخر؟</h2>
@@ -77,14 +77,14 @@ export const staticArticles: Article[] = [
       <p>اختيار العطر هو رحلة شخصية جداً. لا تتبع الموضة بشكل أعمى، بل ابحث عن العطر الذي يجعلك تشعر بالسعادة، الثقة، والجاذبية. اجعل عطرك هو <strong>توقيعك غير المرئي</strong> الذي يسبقك في الدخول ويبقى بعد رحيلك.</p>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-05-10T10:00:00Z",
-    created_at: "2024-05-10T10:00:00Z"
+    published_at: "2026-08-21T10:00:00Z",
+    created_at: "2026-08-21T10:00:00Z"
   },
   {
     id: "a2",
     title: "مقارنة حاسمة: العطور الصيفية مقابل العطور الشتوية - ماذا تختار؟",
     slug: "summer-vs-winter-perfumes",
-    image_url: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=1200",
+    image_url: "https://nvqhxljakfqurutkxdmp.supabase.co/storage/v1/object/public/images/products/1787225224359-9p9jf.jpg",
     excerpt: "تعرف على الاختلافات الجوهرية بين العطور الصيفية المنعشة والعطور الشتوية الدافئة، ولماذا يعتبر تغيير عطرك مع تغير الفصول خطوة ضرورية للأناقة.",
     content: `
       <h2>لماذا يجب عليك تغيير عطرك مع تغير الفصول؟</h2>
@@ -110,8 +110,8 @@ export const staticArticles: Article[] = [
       <p>إذا كنت لا تفضل شراء عطور متعددة، يمكنك اللجوء إلى <strong>العطور الجوكر (Versatile Fragrances)</strong>؛ وهي العطور التي تدمج بين الانتعاش الحمضي في الافتتاحية والأساس الخشبي في القاعدة، مما يجعلها مناسبة لجميع فصول السنة (مثل عطر كريد أفينتوس أو بلو دي شانيل).</p>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-06-15T12:00:00Z",
-    created_at: "2024-06-15T12:00:00Z"
+    published_at: "2026-08-22T12:00:00Z",
+    created_at: "2026-08-22T12:00:00Z"
   }
 ,
   {
@@ -154,8 +154,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-2",
@@ -197,8 +197,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-3",
@@ -240,8 +240,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-4",
@@ -283,8 +283,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-5",
@@ -326,8 +326,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-6",
@@ -369,8 +369,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-7",
@@ -412,8 +412,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-8",
@@ -455,8 +455,8 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   },
   {
     id: "prod-art-9",
@@ -498,7 +498,7 @@ export const staticArticles: Article[] = [
       </div>
     `,
     author: "أحمد الماسي",
-    published_at: "2024-08-22T12:00:00Z",
-    created_at: "2024-08-22T12:00:00Z"
+    published_at: "2026-08-23T12:00:00Z",
+    created_at: "2026-08-23T12:00:00Z"
   }
 ];
