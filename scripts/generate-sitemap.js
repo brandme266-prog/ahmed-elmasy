@@ -15,11 +15,11 @@ if (fs.existsSync(envPath)) {
   });
 }
 
-const supabaseUrl = envConfig['VITE_SUPABASE_URL'] || envConfig['SUPABASE_URL'];
-const supabaseKey = envConfig['VITE_SUPABASE_PUBLISHABLE_KEY'] || envConfig['SUPABASE_PUBLISHABLE_KEY'];
+const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || envConfig['VITE_SUPABASE_URL'] || envConfig['SUPABASE_URL'];
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || envConfig['VITE_SUPABASE_ANON_KEY'] || envConfig['VITE_SUPABASE_PUBLISHABLE_KEY'] || envConfig['SUPABASE_PUBLISHABLE_KEY'];
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error("Missing Supabase credentials in .env");
+  console.error("Missing Supabase credentials in environment or .env");
   process.exit(1);
 }
 
