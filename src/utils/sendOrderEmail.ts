@@ -47,6 +47,8 @@ ${orderDetails.totalPrice ? `الإجمالي: ${orderDetails.totalPrice} ج.م`
           access_key: key,
           subject: `طلب جديد من ${orderDetails.customerName}`,
           from_name: "متجر أحمد الماسي",
+          name: orderDetails.customerName || "عميل",
+          email: orderDetails.customerEmail || "no-reply@ahmedalmasi.com",
           message: emailMessage,
         }),
       })
