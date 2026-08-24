@@ -51,8 +51,8 @@ const ProductDetail = () => {
 
   const p = product || staticProduct;
   const isLoading = !p && isQueryLoading;
-  const similarProducts = product ? staticProducts
-    .filter(p => p.category_id === product.category_id && p.id !== product.id)
+  const similarProducts = p ? staticProducts
+    .filter(item => item.category_id === p.category_id && item.id !== p.id)
     .slice(0, 4) : [];
 
   if (isLoading) {
@@ -91,20 +91,20 @@ const ProductDetail = () => {
   const finalPrice = discount > 0 ? p.price - (p.price * discount / 100) : p.price;
 
   const handleAddToCart = () => {
-    addItem({ id: product.id, name: product.name, price: finalPrice, image_url: mainImage });
-    toast.success(`تمت إضافة "${product.name}" للسلة`);
+    addItem({ id: p.id, name: p.name, price: finalPrice, image_url: mainImage });
+    toast.success(`تمت إضافة "${p.name}" للسلة`);
   };
 
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>{product.name} - أحمد الماسي للعطور</title>
-        <meta name="description" content={product.description?.substring(0, 160) || `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`} />
-        <meta property="og:title" content={`${product.name} - أحمد الماسي للعطور`} />
-        <meta property="og:description" content={product.description?.substring(0, 160) || `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`} />
+        <title>{p.name} - أحمد الماسي للعطور</title>
+        <meta name="description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من أحمد الماسي.`} />
+        <meta property="og:title" content={`${p.name} - أحمد الماسي للعطور`} />
+        <meta property="og:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من أحمد الماسي.`} />
         <meta property="og:image" content={mainImage || 'https://ahmedalmasi.com/hero-main.jpg'} />
-        <meta name="twitter:title" content={`${product.name} - أحمد الماسي للعطور`} />
-        <meta name="twitter:description" content={product.description?.substring(0, 160) || `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`} />
+        <meta name="twitter:title" content={`${p.name} - أحمد الماسي للعطور`} />
+        <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من أحمد الماسي.`} />
         <meta name="twitter:image" content={mainImage || 'https://ahmedalmasi.com/hero-main.jpg'} />
       </Helmet>
       <ProductSchema product={p} finalPrice={finalPrice} />
@@ -132,12 +132,12 @@ const ProductDetail = () => {
             >
               <div className="bg-secondary/20 rounded-3xl overflow-hidden border border-border aspect-square flex items-center justify-center relative">
                 {mainImage ? (
-                  <img src={mainImage} alt={product.name} className="w-full h-full object-cover" />
+                  <img src={mainImage} alt={p.name} className="w-full h-full object-cover" />
                 ) : (
                   <div className="text-muted-foreground font-cairo">لا توجد صورة</div>
                 )}
                 
-                {product.is_featured && (
+                {p.is_featured && (
                   <Badge className="absolute top-4 right-4 font-cairo text-sm px-3 py-1" style={{ background: "var(--premium-gradient)" }}>
                     ⭐ منتج مميز
                   </Badge>
@@ -177,7 +177,7 @@ const ProductDetail = () => {
               )}
 
               <h1 className="text-3xl md:text-4xl font-cairo font-extrabold text-foreground mb-4">
-                {product.name}
+                {p.name}
               </h1>
 
               <div className="flex items-center gap-2 mb-6">
@@ -213,11 +213,11 @@ const ProductDetail = () => {
                 )}
               </div>
 
-              {product.description && (
+              {p.description && (
                 <div 
                   className="prose prose-lg dark:prose-invert max-w-none mb-8 font-cairo text-muted-foreground leading-relaxed prose-headings:text-foreground prose-h2:text-2xl prose-h3:text-xl prose-h3:text-primary prose-strong:text-foreground prose-p:mb-4 prose-ul:mb-4 prose-ul:list-disc prose-ul:pl-4 prose-li:mb-2 whitespace-pre-line"
                   dir="auto"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{ __html: p.description }}
                 />
               )}
 
