@@ -32,33 +32,60 @@ const Cart = () => {
     }
     
     if (!silent) setGettingLocation(true);
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-        if (!silent) {
-          setGettingLocation(false);
-          toast.success("تم تحديد موقعك بنجاح");
-        }
-      },
-      (error) => {
-        if (!silent) {
-          setGettingLocation(false);
-          if (error.code === error.PERMISSION_DENIED) {
-            toast.error("لم نتمكن من تحديد موقعك. يرجى النقر على أيقونة القفل (🔒) بجوار الرابط أعلى المتصفح والسماح بصلاحية الموقع.");
-          } else if (error.code === error.POSITION_UNAVAILABLE) {
-            toast.error("الموقع غير متاح حالياً. تأكد من تشغيل (Location/GPS) من إعدادات هاتفك.");
-          } else {
-            toast.error("حدث خطأ أثناء تحديد الموقع، يرجى المحاولة مرة أخرى.");
-          }
+
+    const onSuccess = (position: GeolocationPosition) => {
+      setLocation({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+      setGettingLocation(false);
+      if (!silent) {
+        toast.dismiss();
+        toast.success("تم تحديد موقعك بنجاح");
+      }
+    };
+
+    const onError = (error: GeolocationPositionError) => {
+      // If high accuracy failed, try standard accuracy once before giving up
+      if (error.code === 2 || error.code === 3) {
+        navigator.geolocation.getCurrentPosition(
+          onSuccess,
+          (finalError) => {
+            setGettingLocation(false);
+            if (!silent) {
+              toast.dismiss();
+              if (finalError.code === 1) {
+                toast.error("يرجى السماح بصلاحية الموقع من إعدادات المتصفح");
+              } else {
+                toast.error("تعذر تحديد الموقع بدقة، يرجى كتابة العنوان يدوياً");
+              }
+            }
+          },
+          { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
+        );
+        return;
+      }
+
+      setGettingLocation(false);
+      if (!silent) {
+        toast.dismiss();
+        if (error.code === 1) {
+          toast.error("يرجى السماح بصلاحية الموقع من إعدادات المتصفح");
+        } else {
+          toast.error("تعذر تحديد الموقع، يرجى كتابة العنوان يدوياً");
         }
       }
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      onSuccess,
+      onError,
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 }
     );
   };
 
   useEffect(() => {
+    // Request on mount smoothly
     handleGetLocation(true);
   }, []);
 

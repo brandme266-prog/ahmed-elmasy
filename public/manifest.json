@@ -1,11 +1,11 @@
 {
-  "name": "جنّة للمنتجات الغذائية",
-  "short_name": "جنّة",
-  "description": "أفضل المنتجات الغذائية الطبيعية بجودة عالية وأسعار منافسة",
+  "name": "أحمد الماسي العطور",
+  "short_name": "الماسي",
+  "description": "أجود أنواع العطور الفاخرة بأعلى جودة",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#1a4d2e",
+  "theme_color": "#d4af37",
   "icons": [
     {
       "src": "/logo-main.jpg",
