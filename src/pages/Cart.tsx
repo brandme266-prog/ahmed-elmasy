@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import Navbar from "@/components/Navbar";
@@ -25,34 +25,42 @@ const Cart = () => {
   const [gettingLocation, setGettingLocation] = useState(false);
   const { data: settings } = useSiteSettings();
 
-  const handleGetLocation = () => {
+  const handleGetLocation = (silent = false) => {
     if (!navigator.geolocation) {
-      toast.error("متصفحك لا يدعم تحديد الموقع");
+      if (!silent) toast.error("متصفحك لا يدعم تحديد الموقع");
       return;
     }
     
-    setGettingLocation(true);
+    if (!silent) setGettingLocation(true);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-        setGettingLocation(false);
-        toast.success("تم تحديد موقعك بنجاح");
+        if (!silent) {
+          setGettingLocation(false);
+          toast.success("تم تحديد موقعك بنجاح");
+        }
       },
       (error) => {
-        setGettingLocation(false);
-        if (error.code === error.PERMISSION_DENIED) {
-          toast.error("لم نتمكن من تحديد موقعك. يرجى النقر على أيقونة القفل (🔒) بجوار الرابط أعلى المتصفح والسماح بصلاحية الموقع.");
-        } else if (error.code === error.POSITION_UNAVAILABLE) {
-          toast.error("الموقع غير متاح حالياً. تأكد من تشغيل (Location/GPS) من إعدادات هاتفك.");
-        } else {
-          toast.error("حدث خطأ أثناء تحديد الموقع، يرجى المحاولة مرة أخرى.");
+        if (!silent) {
+          setGettingLocation(false);
+          if (error.code === error.PERMISSION_DENIED) {
+            toast.error("لم نتمكن من تحديد موقعك. يرجى النقر على أيقونة القفل (🔒) بجوار الرابط أعلى المتصفح والسماح بصلاحية الموقع.");
+          } else if (error.code === error.POSITION_UNAVAILABLE) {
+            toast.error("الموقع غير متاح حالياً. تأكد من تشغيل (Location/GPS) من إعدادات هاتفك.");
+          } else {
+            toast.error("حدث خطأ أثناء تحديد الموقع، يرجى المحاولة مرة أخرى.");
+          }
         }
       }
     );
   };
+
+  useEffect(() => {
+    handleGetLocation(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -257,7 +265,7 @@ const Cart = () => {
                       <Button 
                         type="button" 
                         variant="outline" 
-                        onClick={handleGetLocation}
+                        onClick={() => handleGetLocation(false)}
                         disabled={gettingLocation}
                         className="font-cairo w-full flex items-center justify-center gap-2 border-primary/30 hover:bg-primary/5 text-primary"
                       >

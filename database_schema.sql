@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS site_settings (
   instagram text,
   tiktok text,
   google_site_verification text,
-  site_name text DEFAULT 'أريج للعطور',
+  site_name text DEFAULT ''
   site_description text,
   logo_url text,
   favicon_url text,

@@ -8,6 +8,7 @@ interface ProductSchemaProps {
     price: number;
     image_url: string | null;
     stock_quantity: number | null;
+    slug?: string | null;
   };
   finalPrice: number;
 }

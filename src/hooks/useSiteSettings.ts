@@ -22,6 +22,7 @@ export interface SiteSettings {
   facebook?: string;
   instagram?: string;
   tiktok?: string;
+  address?: string;
   google_site_verification?: string;
   hero_image?: string;
   about_image?: string;

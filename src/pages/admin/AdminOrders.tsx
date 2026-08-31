@@ -27,6 +27,7 @@ interface AdminOrder {
   status: string;
   created_at: string;
   customer_email?: string | null;
+  customer_address?: string | null;
   notes?: string | null;
   products?: { price: number } | null;
 }
@@ -126,6 +127,7 @@ const AdminOrders = () => {
               <div class="row"><span class="label">الاسم:</span> ${order.customer_name}</div>
               <div class="row"><span class="label">رقم الهاتف:</span> <span dir="ltr">${order.customer_phone}</span></div>
               <div class="row"><span class="label">البريد:</span> ${order.customer_email || 'لا يوجد'}</div>
+              <div class="row"><span class="label">العنوان:</span> ${order.customer_address || 'لا يوجد'}</div>
             </div>
             <div class="box">
               <h3>معلومات التسليم</h3>
@@ -313,6 +315,7 @@ const AdminOrders = () => {
                 <div><p className="text-muted-foreground">الكمية</p><p className="font-semibold">{selectedOrder.quantity}</p></div>
                 <div><p className="text-muted-foreground">التاريخ</p><p className="font-semibold">{new Date(selectedOrder.created_at).toLocaleDateString("ar-EG")}</p></div>
               </div>
+              <div><p className="text-muted-foreground">العنوان</p><p className="font-semibold mt-1">{selectedOrder.customer_address || "-"}</p></div>
               {selectedOrder.notes && (
                 <div><p className="text-muted-foreground">ملاحظات</p><p className="bg-secondary/50 rounded-lg p-3 mt-1">{selectedOrder.notes}</p></div>
               )}
