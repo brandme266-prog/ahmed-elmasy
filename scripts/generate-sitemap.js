@@ -15,15 +15,16 @@ if (fs.existsSync(envPath)) {
   });
 }
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || envConfig['VITE_SUPABASE_URL'] || envConfig['SUPABASE_URL'];
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || envConfig['VITE_SUPABASE_ANON_KEY'] || envConfig['VITE_SUPABASE_PUBLISHABLE_KEY'] || envConfig['SUPABASE_PUBLISHABLE_KEY'];
+let supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || envConfig['VITE_SUPABASE_URL'] || envConfig['SUPABASE_URL'];
+let supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || envConfig['VITE_SUPABASE_ANON_KEY'] || envConfig['VITE_SUPABASE_PUBLISHABLE_KEY'] || envConfig['SUPABASE_PUBLISHABLE_KEY'];
 
+let supabase = null;
 if (!supabaseUrl || !supabaseKey) {
-  console.error("Missing Supabase credentials in environment or .env");
-  process.exit(1);
+  console.warn("⚠️ Warning: Missing Supabase credentials in environment or .env");
+  console.warn("⚠️ Sitemap will be generated with only static URLs.");
+} else {
+  supabase = createClient(supabaseUrl, supabaseKey);
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function generateSitemap() {
   console.log("Generating dynamic sitemap...");
@@ -38,47 +39,49 @@ async function generateSitemap() {
   ];
 
   try {
-    // Fetch active products
-    const { data: products, error: pError } = await supabase
-      .from('products')
-      .select('slug, id, updated_at')
-      .eq('is_active', true);
+    if (supabase) {
+      // Fetch active products
+      const { data: products, error: pError } = await supabase
+        .from('products')
+        .select('slug, id, updated_at')
+        .eq('is_active', true);
+        
+      if (pError) throw pError;
       
-    if (pError) throw pError;
-    
-    if (products) {
-      products.forEach(p => {
-        const identifier = p.slug || p.id;
-        if (identifier) {
-          urls.push({
-            url: `/products/${identifier}`,
-            priority: 0.8,
-            changefreq: 'weekly',
-            lastmod: p.updated_at
-          });
-        }
-      });
-    }
+      if (products) {
+        products.forEach(p => {
+          const identifier = p.slug || p.id;
+          if (identifier) {
+            urls.push({
+              url: `/products/${identifier}`,
+              priority: 0.8,
+              changefreq: 'weekly',
+              lastmod: p.updated_at
+            });
+          }
+        });
+      }
 
-    // Fetch published articles
-    const { data: articles, error: aError } = await supabase
-      .from('articles')
-      .select('slug, updated_at')
-      .eq('is_published', true);
+      // Fetch published articles
+      const { data: articles, error: aError } = await supabase
+        .from('articles')
+        .select('slug, updated_at')
+        .eq('is_published', true);
+        
+      if (aError) throw aError;
       
-    if (aError) throw aError;
-    
-    if (articles) {
-      articles.forEach(a => {
-        if (a.slug) {
-          urls.push({
-            url: `/articles/${a.slug}`,
-            priority: 0.7,
-            changefreq: 'monthly',
-            lastmod: a.updated_at
-          });
-        }
-      });
+      if (articles) {
+        articles.forEach(a => {
+          if (a.slug) {
+            urls.push({
+              url: `/articles/${a.slug}`,
+              priority: 0.7,
+              changefreq: 'monthly',
+              lastmod: a.updated_at
+            });
+          }
+        });
+      }
     }
 
     // Generate XML
